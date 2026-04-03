@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unite Students — Event Planning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0D1B35;--coral:#D94F34;--coral-lt:#FFF0EE;--teal:#00897B;--teal-lt:#E0F2F1;--amber:#C97A0A;--amber-lt:#FFF8E1;--purple:#6B3FA0;--purple-lt:#F3EBF9;--page:#F9F8F5;--surface:#FFFFFF;--border:#E4E0D8;--muted:#72727F;--ink-rgb:13,27,53}
+[data-theme="dark"]{--ink:#E8E6E1;--page:#0F1219;--surface:#181D27;--border:#2A3040;--muted:#8B8FA0;--ink-rgb:232,230,225}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--page);color:var(--ink);font-size:1rem;line-height:1.65;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+
+.site-header{position:sticky;top:0;z-index:100;background:#0D1B35;padding:0 2rem}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.logo-mark{width:28px;height:28px;background:var(--coral);border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.9rem;color:white}
+.logo-text{font-size:.82rem;font-weight:500;color:white;line-height:1.2}
+.logo-sub{font-size:.65rem;opacity:.45;display:block}
+.main-nav{display:flex;gap:.1rem;flex-wrap:wrap;align-items:center}
+.nav-link{color:rgba(255,255,255,.5);font-size:.79rem;font-weight:500;padding:.3rem .6rem;border-radius:6px;transition:all .15s;white-space:nowrap;cursor:pointer;border:none;background:none;font-family:inherit}
+.nav-link:hover,.nav-link.active{color:white;background:rgba(255,255,255,.1)}
+.mgr-nav-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:7px;color:rgba(255,255,255,.7);font-size:.79rem;font-weight:500;padding:.3rem .7rem;cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+.mgr-nav-btn:hover{background:rgba(255,255,255,.18);color:white}
+.dark-toggle{background:none;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.25rem .5rem;font-size:.8rem;cursor:pointer;color:rgba(255,255,255,.6);transition:all .15s}
+.dark-toggle:hover{color:white;border-color:rgba(255,255,255,.3)}
+
+.main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem 4rem}
+.section{margin-bottom:3.5rem}
+.section-hd{margin-bottom:1.5rem;border-bottom:1.5px solid var(--border);padding-bottom:.875rem}
+.section-lbl{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-bottom:.2rem}
+.section-title{font-size:1.45rem;font-weight:600;letter-spacing:-.02em}
+.section-desc{font-size:.86rem;color:var(--muted);margin-top:.3rem}
+
+.hero{background:#0D1B35;border-radius:16px;padding:2.25rem 2.5rem;color:white;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:var(--coral);border-radius:50%;opacity:.1}
+.hero-left{max-width:560px;position:relative}
+.hero-title{font-size:1.75rem;font-weight:600;line-height:1.15;letter-spacing:-.03em;margin-bottom:.65rem}
+.hero-title span{color:var(--coral)}
+.hero-desc{font-size:.84rem;opacity:.6;line-height:1.7;margin-bottom:1.1rem}
+.hero-chips{display:flex;gap:.45rem;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.11);border-radius:100px;padding:.2rem .65rem;font-size:.72rem;color:rgba(255,255,255,.7)}
+.hero-right{display:flex;flex-direction:column;gap:.75rem;position:relative;flex-shrink:0}
+.venue-cards{display:flex;flex-direction:column;gap:.6rem}
+.venue-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:10px;padding:.75rem 1rem;display:flex;align-items:flex-start;gap:.75rem;min-width:240px}
+.vc-icon{font-size:1.25rem;flex-shrink:0}
+.vc-title{font-weight:600;font-size:.86rem;margin-bottom:.1rem}
+.vc-desc{font-size:.74rem;opacity:.5;line-height:1.45}
+.storage-hero{background:rgba(201,122,10,.15);border:1px solid rgba(201,122,10,.3);border-radius:10px;padding:.65rem 1rem;display:flex;align-items:center;gap:.6rem;font-size:.76rem;color:#FAC845;font-weight:500}
+.btn-edit-rooms{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:.3rem .8rem;font-size:.74rem;font-weight:500;color:rgba(255,255,255,.7);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+.btn-edit-rooms:hover{background:rgba(255,255,255,.18);color:white}
+.vc-remove{background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;font-size:.8rem;margin-left:auto;padding:.1rem .3rem;transition:color .15s;flex-shrink:0}
+.vc-remove:hover{color:var(--coral)}
+
+.room-editor{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);border-radius:10px;padding:1rem;margin-top:.5rem}
+.room-editor.open{display:block}
+.room-presets{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem}
+.room-chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:.25rem .7rem;font-size:.74rem;color:rgba(255,255,255,.6);cursor:pointer;transition:all .15s;font-family:inherit}
+.room-chip:hover{border-color:rgba(255,255,255,.4)}
+.room-chip.active{background:var(--teal);border-color:var(--teal);color:white}
+.room-custom-row{display:flex;gap:.4rem}
+.room-custom-row input{flex:1;height:32px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:0 .6rem;font-size:.78rem;font-family:inherit;color:white}
+.room-custom-row input::placeholder{color:rgba(255,255,255,.3)}
+.room-custom-row button{height:32px;background:var(--teal);border:none;border-radius:6px;padding:0 .7rem;font-size:.78rem;color:white;cursor:pointer;font-family:inherit;white-space:nowrap}
+
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-bottom:1.25rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:.875rem 1rem;text-align:center}
+.stat-val{font-size:1.3rem;font-weight:700;color:var(--teal)}
+.stat-val.coral{color:var(--coral)}
+.stat-lbl{font-size:.7rem;color:var(--muted);margin-top:.15rem}
+
+.budget-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem}
+.budget-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem;flex-wrap:wrap;gap:.75rem}
+.budget-title{font-weight:600;font-size:.92rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.budget-total{font-size:1.3rem;font-weight:600;color:var(--teal)}
+.budget-bar-wrap{background:var(--page);border-radius:100px;height:9px;overflow:hidden;margin-bottom:.65rem}
+.budget-fill{height:100%;border-radius:100px;background:var(--teal);transition:width .5s ease}
+.budget-fill.over{background:var(--coral)}
+.budget-meta{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:1rem}
+.budget-events{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.45rem;margin-bottom:1rem}
+.bev{display:flex;align-items:center;justify-content:space-between;background:var(--page);border-radius:8px;padding:.4rem .7rem;font-size:.79rem;cursor:pointer;transition:all .15s;border:1.5px solid transparent;user-select:none}
+.bev:hover{opacity:.85}
+.bev.on{border-color:var(--teal);background:var(--teal-lt)}
+.bev-name{flex:1;color:var(--ink)}
+.bev-cost{font-weight:600;color:var(--muted);margin-left:.4rem}
+.bev.on .bev-cost{color:var(--teal)}
+.budget-summary{display:flex;gap:1.5rem;padding-top:.875rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.bs-item{display:flex;flex-direction:column}
+.bs-val{font-weight:600;font-size:1.05rem}
+.bs-val.red{color:var(--coral)}
+.bs-lbl{font-size:.7rem;color:var(--muted)}
+.btn-edit-budget{background:none;border:1px solid var(--border);border-radius:6px;padding:.2rem .55rem;font-size:.72rem;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .15s}
+.btn-edit-budget:hover{background:var(--ink);color:white;border-color:var(--ink)}
+[data-theme="dark"] .btn-edit-budget:hover{background:var(--coral);border-color:var(--coral)}
+.budget-edit-row{display:none;align-items:center;gap:.5rem;margin-bottom:.75rem;flex-wrap:wrap}
+.budget-edit-row.open{display:flex}
+.budget-edit-row input{height:34px;width:100px;border:1px solid var(--border);border-radius:7px;padding:0 .6rem;font-size:.875rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.budget-edit-row label{font-size:.78rem;color:var(--muted)}
+.budget-edit-row button{height:34px;background:var(--teal);color:white;border:none;border-radius:7px;padding:0 .8rem;font-size:.8rem;cursor:pointer;font-family:inherit}
+
+.note-box{border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.5rem;font-size:.86rem}
+.note-box.amber{background:#FFFBEB;border:1px solid #FDEAB0}
+[data-theme="dark"] .note-box.amber{background:#2A2210;border-color:#5D4A10}
+.note-title{font-weight:600;margin-bottom:.65rem;display:flex;align-items:center;gap:.45rem;color:#7A5200}
+[data-theme="dark"] .note-title{color:#FAC845}
+.note-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.35rem}
+.note-list li{display:flex;align-items:flex-start;gap:.4rem;color:#5D3F00;line-height:1.4;font-size:.83rem}
+[data-theme="dark"] .note-list li{color:#D4B870}
+.note-list li::before{content:'→';flex-shrink:0;opacity:.5}
+
+.roadmap-timeline{margin-bottom:1.25rem;position:relative;padding-top:1.5rem}
+.tl-bar{height:14px;border-radius:100px;display:flex;overflow:hidden}
+.tl-ph1{background:var(--teal);height:100%}
+.tl-ph2{background:var(--amber);height:100%}
+.tl-ph3{background:var(--coral);height:100%}
+.tl-ph4{background:var(--purple);height:100%}
+.tl-labels{display:flex;font-size:.7rem;margin-top:.5rem}
+.tl-lbl{font-weight:500;color:var(--muted)}
+.tl-today-wrap{position:absolute;top:0;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.tl-today-dot{width:3px;height:28px;background:var(--ink);border-radius:2px;margin-top:5px}
+[data-theme="dark"] .tl-today-dot{background:white}
+.tl-today-label{font-size:.62rem;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.1rem .4rem;white-space:nowrap;margin-bottom:.1rem}
+.phase-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.phase-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;position:relative;overflow:hidden}
+.phase-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.pc1::before{background:var(--teal)}.pc2::before{background:var(--amber)}.pc3::before{background:var(--coral)}.pc4::before{background:var(--purple)}
+.pc-badge{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+.pc1 .pc-badge{color:var(--teal)}.pc2 .pc-badge{color:var(--amber)}.pc3 .pc-badge{color:var(--coral)}.pc4 .pc-badge{color:var(--purple)}
+.pc-title{font-weight:600;font-size:.95rem;margin-bottom:.15rem}
+.pc-dates{font-size:.75rem;color:var(--muted);margin-bottom:.75rem}
+.pc-dates input[type="date"]{font-size:.72rem;border:1px solid var(--border);border-radius:5px;padding:.15rem .35rem;font-family:inherit;background:var(--surface);color:var(--ink);margin:0 .15rem}
+.pc-events{list-style:none;display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
+.pc-ev{font-size:.82rem;display:flex;align-items:center;gap:.4rem}
+.pc-freq{font-size:.76rem;background:var(--page);border-radius:6px;padding:.3rem .65rem;color:var(--muted);display:inline-flex;align-items:center;gap:.35rem;margin-top:.25rem}
+.pc-note{font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border)}
+.tl-legend{display:flex;gap:1.25rem;margin-bottom:.6rem;flex-wrap:wrap}
+.tl-leg-item{display:flex;align-items:center;gap:.4rem;font-size:.76rem;color:var(--muted)}
+.tl-leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.2rem}
+.event-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.event-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(var(--ink-rgb),.08);border-color:var(--muted)}
+.event-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
+.event-card.social::before{background:var(--teal)}
+.event-card.creative::before{background:var(--coral)}
+.event-card.competitive::before{background:var(--amber)}
+.event-card.cultural::before{background:var(--purple)}
+.ec-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.8rem;gap:.6rem}
+.ec-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.social .ec-icon{background:var(--teal-lt)}.creative .ec-icon{background:var(--coral-lt)}.competitive .ec-icon{background:var(--amber-lt)}.cultural .ec-icon{background:var(--purple-lt)}
+.ec-top-right{display:flex;flex-direction:column;align-items:flex-end;gap:.35rem}
+.ec-badge{font-size:.63rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.18rem .55rem;border-radius:100px}
+.social .ec-badge{background:var(--teal-lt);color:var(--teal)}.creative .ec-badge{background:var(--coral-lt);color:var(--coral)}.competitive .ec-badge{background:var(--amber-lt);color:var(--amber)}.cultural .ec-badge{background:var(--purple-lt);color:var(--purple)}
+.status-badge{border:none;border-radius:100px;font-size:.63rem;font-weight:600;padding:.18rem .55rem;cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+.status-badge.none{background:var(--border);color:var(--muted)}
+.status-badge.scheduled{background:var(--amber-lt);color:var(--amber)}
+.status-badge.done{background:var(--teal-lt);color:var(--teal)}
+.ec-name{font-weight:600;font-size:.97rem;margin-bottom:.3rem;line-height:1.25}
+.ec-desc{font-size:.83rem;color:var(--muted);line-height:1.5;margin-bottom:.8rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ec-meta{display:flex;gap:1rem;font-size:.76rem;color:var(--muted);flex-wrap:wrap}
+.ec-meta-item{display:flex;align-items:center;gap:.25rem}
+.ec-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.8rem;padding-top:.7rem;border-top:1px solid var(--border)}
+.ec-venue{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}
+.btn-detail{background:none;border:1px solid var(--border);border-radius:7px;padding:.28rem .7rem;font-size:.76rem;cursor:pointer;font-family:inherit;color:var(--ink);transition:all .15s}
+.btn-detail:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.ec-edit-btn{background:none;border:none;font-size:.72rem;color:var(--muted);cursor:pointer;font-family:inherit;padding:.1rem .3rem;border-radius:4px;transition:all .15s;margin-left:.2rem}
+.ec-edit-btn:hover{color:var(--ink);background:var(--page)}
+.custom-tag{font-size:.6rem;font-weight:600;background:var(--purple-lt);color:var(--purple);border-radius:4px;padding:.1rem .4rem;margin-left:.35rem;text-transform:uppercase;letter-spacing:.04em}
+.section-hd-row{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.section-hd-btns{display:flex;gap:.5rem;align-items:center;flex-shrink:0;margin-top:.1rem}
+.btn-create-evt{background:var(--ink);color:white;border:none;border-radius:8px;padding:.4rem 1rem;font-size:.8rem;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s;white-space:nowrap}
+[data-theme="dark"] .btn-create-evt{background:var(--coral)}
+.btn-create-evt:hover{opacity:.85}
+.btn-show-hidden{background:none;border:1px solid var(--border);border-radius:8px;padding:.4rem .875rem;font-size:.8rem;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .15s;white-space:nowrap}
+.btn-show-hidden:hover{background:var(--page)}
+.hidden-count{display:inline-flex;align-items:center;justify-content:center;background:var(--coral);color:white;border-radius:100px;width:18px;height:18px;font-size:.62rem;font-weight:600;margin-left:.35rem}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.5);z-index:200;align-items:center;justify-content:center;padding:1rem}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:18px;width:100%;max-width:700px;max-height:88vh;overflow-y:auto;position:relative}
+.modal-hd{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:.9rem;position:sticky;top:0;background:var(--surface);border-radius:18px 18px 0 0;z-index:1}
+.modal-icon{width:48px;height:48px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.modal-close{position:absolute;top:1.1rem;right:1.1rem;width:30px;height:30px;border:1px solid var(--border);border-radius:7px;background:none;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;font-family:inherit;color:var(--ink);transition:all .15s}
+.modal-close:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.modal-body{padding:1.4rem 1.5rem}
+.ms{margin-bottom:1.5rem}
+.ms-title{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem}
+.ms-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.desc-text{font-size:.88rem;line-height:1.7}
+.info-row{display:flex;gap:.75rem;flex-wrap:wrap}
+.info-pill{background:var(--page);border-radius:8px;padding:.4rem .8rem;font-size:.8rem}
+.info-pill strong{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:.1rem}
+.storage-banner{background:#FFFBEB;border:1px solid #FDEAB0;border-radius:8px;padding:.55rem .9rem;font-size:.78rem;color:#7A5200;display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;font-weight:500}
+[data-theme="dark"] .storage-banner{background:#2A2210;border-color:#5D4A10;color:#FAC845}
+.mat-list{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.mat-item{display:flex;align-items:center;gap:.45rem;padding:.5rem .7rem;background:var(--page);border-radius:8px;font-size:.83rem;flex-wrap:wrap}
+.mat-name{flex:1;min-width:120px}
+.mat-cost{color:var(--muted);font-size:.76rem}
+.mat-link{color:var(--coral);font-size:.72rem;font-weight:500;padding:.18rem .45rem;background:var(--coral-lt);border-radius:4px;white-space:nowrap;cursor:pointer;border:none;font-family:inherit;text-decoration:none}
+.mat-link-edit{font-size:.65rem;color:var(--muted);cursor:pointer;border:none;background:none;font-family:inherit;padding:.1rem .3rem;transition:color .15s}
+.mat-link-edit:hover{color:var(--ink)}
+.mat-reuse{font-size:.65rem;background:var(--teal-lt);color:var(--teal);padding:.13rem .42rem;border-radius:4px;font-weight:500;white-space:nowrap}
+.cost-block{background:#0D1B35;color:white;border-radius:11px;padding:1.1rem 1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-top:.65rem}
+.cost-num{font-size:1.9rem;font-weight:600}
+.cost-note{font-size:.78rem;opacity:.5;max-width:240px;line-height:1.5}
+.tip-box{background:var(--page);border-radius:9px;padding:.875rem 1.1rem;font-size:.84rem;line-height:1.6;color:var(--muted);border-left:3px solid var(--teal)}
+.tip-box strong{color:var(--ink)}
+.notes-section{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.notes-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.notes-title{font-size:.82rem;font-weight:600;color:var(--ink)}
+.notes-status{font-size:.74rem;color:var(--teal);opacity:0;transition:opacity .3s}
+.notes-status.show{opacity:1}
+.notes-textarea{width:100%;min-height:90px;border:1px solid var(--border);border-radius:8px;padding:.65rem .875rem;font-size:.85rem;font-family:'DM Sans',sans-serif;line-height:1.6;color:var(--ink);background:var(--page);resize:vertical;margin-bottom:.6rem}
+.btn-save{background:var(--teal);color:white;border:none;border-radius:7px;padding:.38rem .9rem;font-size:.8rem;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.btn-save:hover{opacity:.85}
+
+/* PREP PLANNER */
+.prep-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1.25rem}
+.prep-row{display:flex;gap:.875rem;align-items:flex-end;flex-wrap:wrap}
+.prep-field{display:flex;flex-direction:column;gap:.35rem;flex:1;min-width:170px}
+.prep-field label{font-size:.74rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.prep-field select,.prep-field input[type="date"]{height:40px;border:1px solid var(--border);border-radius:8px;padding:0 .75rem;font-size:.875rem;font-family:inherit;color:var(--ink);background:var(--surface);appearance:none;-webkit-appearance:none;cursor:pointer}
+.prep-field select:focus,.prep-field input:focus{outline:none;border-color:var(--ink)}
+.btn-gen{height:40px;background:var(--ink);color:white;border:none;border-radius:8px;padding:0 1.4rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit;white-space:nowrap;transition:opacity .15s;flex-shrink:0}
+[data-theme="dark"] .btn-gen{background:var(--coral)}
+.btn-gen:hover{opacity:.85}
+.sched-container{display:none;margin-top:1.25rem}
+.sched-container.vis{display:block}
+.sched-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.75rem}
+.sched-info-title{font-weight:600;font-size:.95rem;margin-bottom:.15rem}
+.sched-info-sub{font-size:.78rem;color:var(--muted)}
+.btn-print{background:none;border:1px solid var(--border);border-radius:7px;padding:.35rem .8rem;font-size:.76rem;cursor:pointer;font-family:inherit;color:var(--ink);transition:all .15s;white-space:nowrap}
+.btn-print:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.sched-steps{display:flex;flex-direction:column;gap:.45rem}
+.sched-step{display:flex;align-items:flex-start;gap:.875rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem .9rem;transition:all .15s}
+.sched-step.done{background:var(--teal-lt);border-color:#B8DDB8;opacity:.72}
+.sched-step.is-event{border-color:var(--coral);background:var(--coral-lt)}
+.sched-step.is-past{opacity:.5}
+.sched-check{width:18px;height:18px;cursor:pointer;flex-shrink:0;margin-top:.2rem;accent-color:var(--teal)}
+.sched-date{width:95px;flex-shrink:0;font-size:.78rem;font-weight:600;color:var(--muted);padding-top:.15rem;line-height:1.3}
+.sched-date.event-day{color:var(--coral)}
+.sched-content{flex:1}
+.sched-label{font-weight:600;font-size:.88rem;margin-bottom:.1rem}
+.sched-desc{font-size:.79rem;color:var(--muted);line-height:1.5}
+.sched-tag{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.12rem .45rem;border-radius:4px;flex-shrink:0;align-self:flex-start;margin-top:.2rem;white-space:nowrap}
+.tag-plan{background:var(--purple-lt);color:var(--purple)}
+.tag-approval{background:var(--amber-lt);color:var(--amber)}
+.tag-order{background:var(--coral-lt);color:var(--coral)}
+.tag-comms{background:var(--teal-lt);color:var(--teal)}
+.tag-event{background:#0D1B35;color:white}
+.tag-followup{background:var(--page);color:var(--muted);border:1px solid var(--border)}
+
+/* EMAIL TEMPLATES */
+.tpl-grid{display:flex;flex-direction:column;gap:1.1rem}
+.tpl-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;overflow:hidden}
+.tpl-hd{background:var(--page);padding:.8rem 1.1rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;cursor:pointer;user-select:none}
+.tpl-hd-left{display:flex;align-items:center;gap:.7rem;flex:1;min-width:0}
+.tpl-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.tpl-evt-name{font-weight:600;font-size:.88rem}
+.tpl-subj{font-size:.76rem;color:var(--muted);margin-top:.05rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:350px}
+.tpl-actions{display:flex;gap:.45rem;align-items:center;flex-shrink:0}
+.tpl-toggle{font-size:.76rem;color:var(--muted);font-weight:500;white-space:nowrap}
+.btn-copy{background:var(--ink);color:white;border:none;border-radius:7px;padding:.3rem .8rem;font-size:.76rem;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}
+[data-theme="dark"] .btn-copy{background:var(--coral)}
+.btn-copy:hover{opacity:.85}
+.btn-copy.copied{background:var(--teal)}
+.tpl-body{display:none;padding:1.35rem;font-size:.85rem;line-height:1.85;white-space:pre-wrap;font-family:'DM Sans',sans-serif;border-top:1px solid var(--border);color:var(--ink)}
+.tpl-body.open{display:block}
+.subj-line{font-size:.78rem;background:var(--page);padding:.45rem .8rem;border-radius:8px;margin-bottom:.875rem;color:var(--muted)}
+.subj-line strong{color:var(--ink)}
+
+/* POSTER SECTION */
+.poster-copy-gen{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1.5rem}
+.pcg-row{display:flex;gap:.875rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:1.1rem}
+.pcg-field{display:flex;flex-direction:column;gap:.35rem;flex:1;min-width:200px}
+.pcg-field label{font-size:.74rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.pcg-field select{height:40px;border:1px solid var(--border);border-radius:8px;padding:0 .75rem;font-size:.875rem;font-family:inherit;color:var(--ink);background:var(--surface);appearance:none;-webkit-appearance:none;cursor:pointer}
+.poster-output{display:none}
+.poster-output.vis{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start}
+.poster-preview-wrap{position:relative}
+.poster-preview-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+.poster{border-radius:14px;padding:1.75rem 1.5rem 1.4rem;display:flex;flex-direction:column;justify-content:space-between;min-height:340px;position:relative;overflow:hidden}
+.p-dark{background:#0D1B35;color:white}
+.p-coral{background:var(--coral);color:white}
+.p-forest{background:#0D3528;color:white}
+.p-purple{background:#1F0B40;color:white}
+.p-blob{position:absolute;border-radius:50%;pointer-events:none}
+.p-eyebrow{font-size:.58rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;opacity:.45;margin-bottom:.6rem}
+.p-title{font-size:1.85rem;font-weight:600;line-height:1.05;letter-spacing:-.03em;margin-bottom:.5rem}
+.p-line{width:28px;height:3px;border-radius:3px;background:rgba(255,255,255,.35);margin-bottom:.7rem}
+.p-detail{font-size:.76rem;opacity:.6;line-height:1.6}
+.p-cta{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);border-radius:7px;padding:.38rem .9rem;font-size:.76rem;font-weight:600;margin-bottom:.875rem}
+.p-footer{border-top:1px solid rgba(255,255,255,.14);padding-top:.75rem;display:flex;justify-content:space-between;align-items:flex-end;font-size:.65rem;opacity:.4}
+.p-qr{width:44px;height:44px;border:1.5px dashed rgba(255,255,255,.35);border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.45rem;font-weight:600;letter-spacing:.03em;opacity:.6;line-height:1.3;color:rgba(255,255,255,.7)}
+.p-badge{position:absolute;top:1.25rem;right:1.25rem;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:.18rem .6rem;font-size:.64rem;font-weight:600}
+.poster-copy-panel{display:flex;flex-direction:column;gap:.75rem}
+.poster-copy-panel-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.1rem}
+.copy-textarea{width:100%;min-height:200px;border:1px solid var(--border);border-radius:8px;padding:.8rem .9rem;font-size:.8rem;font-family:'DM Sans',monospace;line-height:1.75;color:var(--ink);background:var(--page);resize:vertical}
+.poster-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn-cp-text{background:var(--ink);color:white;border:none;border-radius:7px;padding:.4rem 1rem;font-size:.8rem;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s}
+[data-theme="dark"] .btn-cp-text{background:var(--coral)}
+.btn-cp-text:hover{opacity:.85}.btn-cp-text.copied{background:var(--teal)}
+.btn-canva{background:#7D2AE8;color:white;border:none;border-radius:7px;padding:.4rem 1rem;font-size:.8rem;font-weight:500;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:.4rem;transition:opacity .15s;text-decoration:none}
+.btn-canva:hover{opacity:.85}
+.poster-note{font-size:.78rem;color:var(--muted);margin-top:.6rem;line-height:1.5}
+.poster-all-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+.poster-thumb-label{font-size:.7rem;color:var(--muted);text-align:center;margin-top:.5rem}
+.canva-prompt-section{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)}
+.canva-prompt-box{background:var(--page);border:1px solid var(--border);border-radius:8px;padding:.8rem;font-size:.78rem;line-height:1.7;color:var(--muted);white-space:pre-wrap;max-height:200px;overflow-y:auto}
+
+/* INVENTORY */
+.inv-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1rem}
+.inv-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.inv-table th{text-align:left;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:.5rem .6rem;border-bottom:1.5px solid var(--border)}
+.inv-table td{padding:.5rem .6rem;border-bottom:1px solid var(--border);vertical-align:top}
+.inv-table tr:last-child td{border-bottom:none}
+.inv-add-row{display:flex;gap:.4rem;margin-top:.75rem;flex-wrap:wrap}
+.inv-add-row input{flex:1;min-width:120px;height:34px;border:1px solid var(--border);border-radius:7px;padding:0 .6rem;font-size:.82rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.inv-add-row button{height:34px;background:var(--teal);color:white;border:none;border-radius:7px;padding:0 .8rem;font-size:.8rem;cursor:pointer;font-family:inherit;white-space:nowrap}
+.inv-rm{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.78rem;padding:.1rem .3rem;transition:color .15s}
+.inv-rm:hover{color:var(--coral)}
+.evt-log{background:var(--page);border:1px solid var(--border);border-radius:10px;padding:.875rem;margin-top:.65rem;font-size:.82rem}
+.evt-log-entry{padding:.5rem 0;border-bottom:1px solid var(--border)}
+.evt-log-entry:last-child{border-bottom:none}
+.evt-log-date{font-weight:600;font-size:.75rem;color:var(--teal)}
+.evt-log-text{color:var(--muted);line-height:1.5;margin-top:.15rem}
+
+/* ENGAGEMENT */
+.engage-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.engage-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem}
+.engage-title{font-weight:600;margin-bottom:.875rem;font-size:.92rem}
+.tip-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.tip-item{display:flex;gap:.7rem;font-size:.84rem;color:var(--muted);align-items:flex-start}
+.tip-num{width:20px;height:20px;background:var(--ink);color:white;border-radius:50%;font-size:.65rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.2rem}
+[data-theme="dark"] .tip-num{background:var(--coral)}
+.tip-item strong{color:var(--ink)}
+.survey-q{background:var(--page);border-radius:9px;padding:.6rem .875rem;margin-bottom:.5rem;font-size:.84rem;border-left:3px solid var(--coral)}
+.survey-q-txt{font-weight:500;margin-bottom:.15rem;color:var(--ink)}
+.survey-q-type{font-size:.7rem;color:var(--muted)}
+.survey-box{background:#0D1B35;border-radius:11px;padding:1.1rem;color:white;margin-top:.875rem}
+.survey-box-title{font-weight:600;margin-bottom:.25rem;font-size:.9rem}
+.survey-box-desc{font-size:.76rem;opacity:.55;margin-bottom:.875rem}
+.plat-links{display:flex;gap:.55rem;flex-wrap:wrap}
+.plat-btn{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);border-radius:7px;padding:.3rem .8rem;font-size:.76rem;color:white;font-weight:500;cursor:pointer;font-family:inherit;transition:background .15s;text-decoration:none;display:inline-block}
+.plat-btn:hover{background:rgba(255,255,255,.18)}
+
+.site-footer{text-align:center;padding:1.75rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+
+/* COMPLETION MODAL */
+.completion-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.55);z-index:250;align-items:center;justify-content:center;padding:1rem}
+.completion-overlay.open{display:flex}
+.completion-modal{background:var(--surface);border-radius:16px;padding:1.75rem;width:100%;max-width:440px}
+.completion-modal h3{font-size:1.05rem;margin-bottom:.25rem}
+.completion-modal p{font-size:.82rem;color:var(--muted);margin-bottom:1rem}
+.completion-field{margin-bottom:.875rem}
+.completion-field label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:.3rem}
+.completion-field input,.completion-field textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:.5rem .7rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.completion-field textarea{min-height:80px;resize:vertical;line-height:1.6}
+.stars{display:flex;gap:.25rem}
+.star{font-size:1.4rem;cursor:pointer;color:var(--border);transition:color .1s}
+.star.active{color:#F4B400}
+.completion-btns{display:flex;gap:.5rem;margin-top:1rem}
+.completion-btns button{padding:.4rem 1rem;border-radius:7px;font-size:.82rem;cursor:pointer;font-family:inherit;border:none}
+
+/* FEEDBACK MODAL */
+.feedback-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.55);z-index:250;align-items:center;justify-content:center;padding:1rem}
+.feedback-overlay.open{display:flex}
+.feedback-modal{background:var(--surface);border-radius:16px;padding:1.75rem;width:100%;max-width:480px}
+.feedback-modal h3{font-size:1.1rem;margin-bottom:.25rem}
+.feedback-modal p{font-size:.82rem;color:var(--muted);margin-bottom:1rem}
+.fb-field{margin-bottom:.875rem}
+.fb-field label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:.3rem}
+.fb-field input,.fb-field textarea,.fb-field select{width:100%;border:1px solid var(--border);border-radius:8px;padding:.5rem .7rem;font-size:.85rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.fb-field textarea{min-height:100px;resize:vertical;line-height:1.6}
+.fb-btns{display:flex;gap:.5rem;margin-top:1rem}
+.fb-btns button{padding:.45rem 1.2rem;border-radius:7px;font-size:.85rem;cursor:pointer;font-family:inherit;border:none;font-weight:500}
+.fb-success{background:var(--teal-lt);border:1px solid var(--teal);border-radius:10px;padding:1rem;text-align:center;color:var(--teal);font-weight:500}
+
+/* WELCOME MODAL */
+.welcome-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.7);z-index:400;align-items:center;justify-content:center;padding:1rem}
+.welcome-overlay.open{display:flex}
+.welcome-modal{background:var(--surface);border-radius:18px;padding:2rem;width:100%;max-width:520px}
+.welcome-modal h2{font-size:1.35rem;margin-bottom:.25rem;letter-spacing:-.02em}
+.welcome-modal .wm-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+.wm-field{margin-bottom:1.1rem}
+.wm-field label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:.35rem}
+.wm-field input{width:100%;height:40px;border:1px solid var(--border);border-radius:8px;padding:0 .75rem;font-size:.875rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.wm-rooms{display:flex;flex-wrap:wrap;gap:.4rem}
+.wm-room-chip{background:var(--page);border:1.5px solid var(--border);border-radius:100px;padding:.3rem .75rem;font-size:.78rem;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--muted)}
+.wm-room-chip.active{background:var(--teal-lt);border-color:var(--teal);color:var(--teal);font-weight:500}
+.wm-save{background:var(--coral);color:white;border:none;border-radius:8px;padding:.5rem 1.5rem;font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;margin-top:.5rem;transition:opacity .15s;width:100%}
+.wm-save:hover{opacity:.85}
+
+/* MANAGER MODAL */
+.mgr-overlay{display:none;position:fixed;inset:0;background:rgba(13,27,53,.55);z-index:300;align-items:flex-start;justify-content:center;padding:1.5rem;overflow-y:auto}
+.mgr-overlay.open{display:flex}
+.mgr-modal{background:var(--surface);border-radius:18px;width:100%;max-width:920px;margin:auto;position:relative}
+.mgr-hd{padding:1.5rem 1.75rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);border-radius:18px 18px 0 0;z-index:1}
+.mgr-hd-left{display:flex;flex-direction:column}
+.mgr-title{font-weight:600;font-size:1.15rem}
+.mgr-subtitle{font-size:.78rem;color:var(--muted);margin-top:.15rem}
+.mgr-close{width:30px;height:30px;border:1px solid var(--border);border-radius:7px;background:none;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;font-family:inherit;color:var(--ink);transition:all .15s;flex-shrink:0}
+.mgr-close:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.mgr-body{padding:1.5rem 1.75rem}
+.mgr-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border);padding-bottom:1rem}
+.mgr-tab{background:none;border:1px solid var(--border);border-radius:8px;padding:.35rem .9rem;font-size:.8rem;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .15s}
+.mgr-tab.active{background:var(--ink);color:white;border-color:var(--ink)}
+[data-theme="dark"] .mgr-tab.active{background:var(--coral);border-color:var(--coral)}
+.mgr-pane{display:none}
+.mgr-pane.active{display:block}
+.mgr-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.mgr-field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.mgr-field.full{grid-column:1/-1}
+.mgr-field label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.mgr-input,.mgr-select{height:40px;border:1px solid var(--border);border-radius:8px;padding:0 .75rem;font-size:.875rem;font-family:inherit;color:var(--ink);background:var(--surface);width:100%}
+.mgr-input:focus,.mgr-select:focus,.mgr-textarea:focus{outline:none;border-color:var(--ink)}
+.mgr-textarea{border:1px solid var(--border);border-radius:8px;padding:.65rem .75rem;font-size:.875rem;font-family:inherit;color:var(--ink);background:var(--surface);width:100%;resize:vertical;min-height:80px;line-height:1.6}
+.mgr-textarea.tall{min-height:130px}
+.icon-picker{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.25rem}
+.icon-opt{width:36px;height:36px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--page)}
+.icon-opt:hover{border-color:var(--ink)}
+.icon-opt.selected{border-color:var(--coral);background:var(--coral-lt)}
+.mat-rows{display:flex;flex-direction:column;gap:.45rem;margin-bottom:.65rem}
+.mat-row{display:grid;grid-template-columns:1fr 80px 1fr auto auto;gap:.4rem;align-items:center}
+.mat-row input{height:36px;border:1px solid var(--border);border-radius:7px;padding:0 .6rem;font-size:.82rem;font-family:inherit;color:var(--ink);background:var(--surface)}
+.mat-row input:focus{outline:none;border-color:var(--ink)}
+.mat-row-reuse{display:flex;align-items:center;gap:.35rem;font-size:.76rem;color:var(--muted);cursor:pointer;white-space:nowrap}
+.mat-row-reuse input{width:14px;height:14px;flex-shrink:0;margin:0}
+.btn-rm-mat{width:28px;height:28px;border:1px solid var(--border);border-radius:6px;background:none;cursor:pointer;font-size:.9rem;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.btn-rm-mat:hover{background:var(--coral-lt);border-color:var(--coral);color:var(--coral)}
+.btn-add-mat{background:none;border:1px dashed var(--border);border-radius:7px;padding:.4rem .875rem;font-size:.8rem;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;width:100%}
+.btn-add-mat:hover{border-color:var(--ink);color:var(--ink)}
+.email-sidebyside{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.75rem}
+.email-panel-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.45rem;display:flex;align-items:center;justify-content:space-between}
+.email-panel-label span{color:var(--teal);font-size:.68rem;cursor:pointer;text-transform:none;letter-spacing:0;font-weight:500}
+.email-preview-box{background:var(--page);border:1px solid var(--border);border-radius:8px;padding:.875rem;font-size:.8rem;line-height:1.75;white-space:pre-wrap;color:var(--muted);min-height:280px;max-height:380px;overflow-y:auto}
+.email-edit-box{border:1px solid var(--border);border-radius:8px;padding:.75rem;font-size:.8rem;line-height:1.75;font-family:inherit;color:var(--ink);min-height:280px;width:100%;resize:vertical;background:var(--surface)}
+.mgr-actions{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.mgr-actions-left{display:flex;gap:.6rem}
+.btn-mgr-save{background:var(--teal);color:white;border:none;border-radius:8px;padding:.5rem 1.4rem;font-size:.875rem;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.btn-mgr-save:hover{opacity:.85}
+.btn-mgr-cancel{background:none;border:1px solid var(--border);border-radius:8px;padding:.5rem 1rem;font-size:.875rem;cursor:pointer;font-family:inherit;color:var(--ink);transition:all .15s}
+.btn-mgr-cancel:hover{background:var(--page)}
+.btn-mgr-delete{background:none;border:1px solid var(--coral);border-radius:8px;padding:.5rem 1rem;font-size:.875rem;cursor:pointer;font-family:inherit;color:var(--coral);transition:all .15s}
+.btn-mgr-delete:hover{background:var(--coral-lt)}
+.mgr-warn{background:var(--amber-lt);border:1px solid #FDEAB0;border-radius:8px;padding:.65rem .9rem;font-size:.8rem;color:#7A5200;margin-bottom:1rem;display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+[data-theme="dark"] .mgr-warn{background:#2A2210;border-color:#5D4A10;color:#FAC845}
+.restore-list{display:flex;flex-direction:column;gap:.5rem}
+.restore-item{display:flex;align-items:center;justify-content:space-between;background:var(--page);border-radius:9px;padding:.65rem 1rem;border:1px solid var(--border)}
+.restore-item-left{display:flex;align-items:center;gap:.6rem;font-size:.875rem}
+.restore-item-left span{opacity:.5}
+.btn-restore{background:var(--teal);color:white;border:none;border-radius:7px;padding:.3rem .8rem;font-size:.76rem;font-weight:500;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.btn-restore:hover{opacity:.85}
+.empty-restore{font-size:.875rem;color:var(--muted);text-align:center;padding:2rem;background:var(--page);border-radius:10px}
+
+@media(max-width:900px){
+  .phase-cards{grid-template-columns:1fr}
+  .engage-grid{grid-template-columns:1fr}
+  .poster-output.vis{grid-template-columns:1fr}
+  .poster-all-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:660px){
+  .events-grid{grid-template-columns:1fr}
+  .hero{padding:1.5rem}
+  .hero-title{font-size:1.45rem}
+  .main{padding:1.5rem 1rem 3rem}
+  .site-header{padding:.5rem 1rem}
+  .header-inner{height:auto;padding:.65rem 0;flex-direction:column;align-items:flex-start;gap:.4rem}
+  .main-nav{gap:.05rem}
+  .budget-events{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .poster-all-grid{grid-template-columns:repeat(2,1fr)}
+  .mgr-form-grid{grid-template-columns:1fr}
+  .mgr-field.full{grid-column:1}
+  .email-sidebyside{grid-template-columns:1fr}
+  .mat-row{grid-template-columns:1fr 70px auto}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+}
+@media print{
+  .site-header,.site-footer,.sched-check,.btn-print,.btn-gen,.prep-form select,.prep-form input,.btn-edit-rooms,.room-editor,.btn-edit-budget,.budget-edit-row,.dark-toggle,.mgr-nav-btn,.btn-create-evt,.btn-show-hidden{display:none!important}
+  .sched-container{display:block!important}
+  body{background:white;color:#0D1B35}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-mark">U</div>
+      <div class="logo-text"><span id="header-building-name">Unite Students</span> <span class="logo-sub">Event Planning Hub</span></div>
+    </div>
+    <nav class="main-nav">
+      <button class="nav-link" onclick="goTo('overview')">Overview</button>
+      <button class="nav-link" onclick="goTo('roadmap')">Roadmap</button>
+      <button class="nav-link" onclick="goTo('events')">Events</button>
+      <button class="nav-link" onclick="goTo('planner')">Prep Planner</button>
+      <button class="nav-link" onclick="goTo('templates')">Emails</button>
+      <button class="nav-link" onclick="goTo('posters')">Posters</button>
+      <button class="nav-link" onclick="goTo('inventory')">Inventory</button>
+      <button class="nav-link" onclick="goTo('engagement')">Engagement</button>
+      <button class="mgr-nav-btn" onclick="openManager('create')">⚙ Manage</button>
+      <button class="dark-toggle" id="dark-btn" onclick="toggleDark()" title="Toggle dark mode">🌙</button>
+      <button class="mgr-nav-btn" onclick="openFeedback()" style="background:rgba(217,79,52,.2);border-color:rgba(217,79,52,.3);color:#FF8A75">💬 Feedback</button>
+    </nav>
+  </div>
+</header>
+
+<main class="main">
+
+<!-- HERO -->
+<div id="overview" class="hero">
+  <div class="hero-left">
+    <div class="hero-title"><span id="hero-building-title">Unite Students</span><br><span>Event Planning Hub</span></div>
+    <div class="hero-desc">Hi! I'm Francesco Sorriento and I created this event planner. My email is <a href="mailto:francesco.sorriento@unitestudents.com" style="color:var(--coral);text-decoration:underline">francesco.sorriento@unitestudents.com</a> — please send over any suggestions or improvements! Any feedback is welcome and appreciated. I hope this helps your building(s) in organising future events!<br><br>We have some useful features here: curated event idea templates, the option to create your own events, logistical info, email templates, poster templates with Canva AI prompts, a full prep planner, inventory tracker, budget planner and more. Everything you need to get started!</div>
+    <div class="hero-chips">
+      <span class="chip">No alcohol</span><span class="chip">No on-site cooking</span><span class="chip">Allergy-aware</span><span class="chip">Reusable materials</span><span class="chip">Auto-saves your work</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.25rem">
+      <span style="font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;opacity:.4">Your Rooms</span>
+      <button class="btn-edit-rooms" id="btn-edit-rooms" onclick="toggleRoomEditor()">✏ Edit rooms</button>
+    </div>
+    <div class="venue-cards" id="venue-cards-list"></div>
+    <div class="room-editor" id="room-editor">
+      <div style="font-size:.74rem;color:rgba(255,255,255,.5);margin-bottom:.5rem">Toggle rooms available at your building:</div>
+      <div class="room-presets" id="room-presets"></div>
+      <div class="room-custom-row">
+        <input type="text" id="custom-room-input" placeholder="Add custom room..." maxlength="40">
+        <button onclick="addCustomRoom()">+ Add</button>
+      </div>
+    </div>
+    <div class="storage-hero">⚠ Always check the storage room before ordering anything on Amazon</div>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div class="section">
+  <div class="section-hd">
+    <div class="section-lbl">Interactive Tool</div>
+    <div class="section-title">Budget Planner</div>
+    <div class="section-desc">Click events below to plan your spend. Selections save automatically.</div>
+  </div>
+  <div class="stats-bar" id="stats-bar">
+    <div class="stat-card"><div class="stat-val" id="stat-total-budget">£700</div><div class="stat-lbl">Total Budget</div></div>
+    <div class="stat-card"><div class="stat-val" id="stat-events-run">0</div><div class="stat-lbl">Events Completed</div></div>
+    <div class="stat-card"><div class="stat-val" id="stat-avg-cost">£0</div><div class="stat-lbl">Avg Cost / Event</div></div>
+    <div class="stat-card"><div class="stat-val" id="stat-capacity">~0</div><div class="stat-lbl">Events Affordable</div></div>
+    <div class="stat-card"><div class="stat-val" id="stat-avg-attendance">—</div><div class="stat-lbl">Avg Attendance</div></div>
+  </div>
+  <div class="budget-card">
+    <div class="budget-top">
+      <div class="budget-title">
+        Monthly: £<span id="monthly-display">350</span>/mo · Available: <strong>£<span id="budget-total-display">700</span></strong>
+        <button class="btn-edit-budget" onclick="toggleBudgetEdit()">✏ Edit</button>
+      </div>
+      <div class="budget-total">£<span id="spent-display">0</span> planned</div>
+    </div>
+    <div class="budget-edit-row" id="budget-edit-row">
+      <label>Monthly £</label>
+      <input type="number" id="budget-monthly-input" min="0" step="50" value="350">
+      <label>Months</label>
+      <input type="number" id="budget-months-input" min="1" max="12" value="2">
+      <button onclick="saveBudgetSettings()">Apply</button>
+    </div>
+    <div class="budget-bar-wrap"><div class="budget-fill" id="budget-bar" style="width:0%"></div></div>
+    <div class="budget-meta"><span id="budget-pct">0% of budget used</span><span>£<span id="remaining-display">700</span> remaining</span></div>
+    <div class="budget-events" id="budget-events-list"></div>
+    <div class="budget-summary">
+      <div class="bs-item"><div class="bs-val" id="bs-events">0</div><div class="bs-lbl">Events selected</div></div>
+      <div class="bs-item"><div class="bs-val" id="bs-spent">£0</div><div class="bs-lbl">Total planned</div></div>
+      <div class="bs-item"><div class="bs-val" id="bs-remain">£700</div><div class="bs-lbl">Remaining</div></div>
+      <div class="bs-item"><div class="bs-val" id="bs-reusable">£0</div><div class="bs-lbl">Reusable assets</div></div>
+      <div class="bs-item"><div class="bs-val" id="bs-capacity">~0 more events</div><div class="bs-lbl">Est. capacity left</div></div>
+    </div>
+  </div>
+  <div class="note-box amber" style="margin-top:1rem">
+    <div class="note-title">⚠ Event Restrictions</div>
+    <ul class="note-list" id="restrictions-list">
+      <li>No alcohol may be provided or promoted at any event</li>
+      <li>No on-site cooking by staff — students may bring their own food</li>
+      <li>Always provide allergy-friendly alternatives where food is involved</li>
+      <li>Mindful of religious and dietary restrictions (halal, vegetarian, vegan)</li>
+      <li>Label all food with ingredients / allergen info</li>
+      <li>Check storage room before ordering — reusable items may already be in stock</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="section" id="roadmap">
+  <div class="section-hd">
+    <div class="section-lbl">Seasonal Planning</div>
+    <div class="section-title">Event Roadmap</div>
+    <div class="section-desc">Plan events across seasons. Customise dates to match your building's academic calendar.</div>
+  </div>
+  <div class="roadmap-timeline" id="roadmap-timeline"></div>
+  <div class="phase-cards" id="season-cards"></div>
+</div>
+
+<!-- EVENTS -->
+<div class="section" id="events">
+  <div class="section-hd">
+    <div class="section-hd-row">
+      <div>
+        <div class="section-lbl" id="events-section-lbl">10 Events</div>
+        <div class="section-title">Event Ideas</div>
+        <div class="section-desc">Click any card for full details, materials, and Amazon links. Click the status badge to update progress. Notes save automatically.</div>
+      </div>
+      <div class="section-hd-btns">
+        <button class="btn-show-hidden" id="btn-show-hidden" onclick="openManager('restore')" style="display:none">Restore hidden <span class="hidden-count" id="hidden-count">0</span></button>
+        <button class="btn-create-evt" onclick="openManager('create')">+ Create Event</button>
+      </div>
+    </div>
+  </div>
+  <div class="events-grid" id="events-grid"></div>
+</div>
+
+<!-- PREP PLANNER -->
+<div class="section" id="planner">
+  <div class="section-hd">
+    <div class="section-lbl">Interactive Tool</div>
+    <div class="section-title">Prep Schedule Planner</div>
+    <div class="section-desc">Pick an event and a date — get an auto-generated prep schedule. Tick steps off as you go. All progress saves to your browser.</div>
+  </div>
+  <div class="prep-form">
+    <div class="prep-row">
+      <div class="prep-field"><label>Select event</label><select id="planner-event"><option value="">— choose an event —</option></select></div>
+      <div class="prep-field"><label>Event date</label><input type="date" id="planner-date"></div>
+      <button class="btn-gen" onclick="generateSchedule()">Generate Schedule →</button>
+    </div>
+  </div>
+  <div class="sched-container" id="sched-container">
+    <div class="sched-top">
+      <div><div class="sched-info-title" id="sched-title"></div><div class="sched-info-sub" id="sched-sub"></div></div>
+      <button class="btn-print" onclick="window.print()">🖨 Print schedule</button>
+    </div>
+    <div class="sched-steps" id="sched-steps"></div>
+  </div>
+</div>
+
+<!-- EMAIL TEMPLATES -->
+<div class="section" id="templates">
+  <div class="section-hd">
+    <div class="section-lbl">Marketing</div>
+    <div class="section-title">Email Templates</div>
+    <div class="section-desc">Ready-to-send templates for each event. Replace [DATE], [TIME], [VENUE], [RSVP LINK] before sending.</div>
+  </div>
+  <div class="tpl-grid" id="tpl-grid"></div>
+</div>
+
+<!-- POSTER SECTION -->
+<div class="section" id="posters">
+  <div class="section-hd">
+    <div class="section-lbl">Marketing</div>
+    <div class="section-title">Poster Templates & Canva AI Prompts</div>
+    <div class="section-desc">Select an event to generate poster copy, a design preview, and a ready-to-paste Canva AI prompt.</div>
+  </div>
+  <div class="poster-copy-gen">
+    <div class="pcg-row">
+      <div class="pcg-field"><label>Select event to generate poster & prompt</label><select id="poster-event-sel" onchange="generatePosterCopy()"><option value="">— choose an event —</option></select></div>
+    </div>
+    <div class="poster-output" id="poster-output">
+      <div class="poster-preview-wrap">
+        <div class="poster-preview-label">Design template</div>
+        <div id="poster-preview-render"></div>
+        <div class="poster-note" style="margin-top:.6rem">This is a design reference. Use the Canva AI prompt below for a professional result.</div>
+      </div>
+      <div class="poster-copy-panel">
+        <div>
+          <div class="poster-copy-panel-label">Poster copy — paste into Canva</div>
+          <textarea class="copy-textarea" id="poster-copy-text" readonly></textarea>
+        </div>
+        <div class="poster-btns">
+          <button class="btn-cp-text" id="btn-cp-poster" onclick="copyPosterText()">Copy text</button>
+          <a class="btn-canva" id="btn-canva-link" href="#" target="_blank">Open Canva ↗</a>
+        </div>
+        <div class="canva-prompt-section">
+          <div class="poster-copy-panel-label">Canva AI prompt — paste into Canva's AI tool <button class="btn-cp-text" style="font-size:.7rem;padding:.2rem .6rem;margin-left:.5rem" onclick="copyCanvaPrompt()">Copy prompt</button></div>
+          <div class="canva-prompt-box" id="canva-prompt-box"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem">
+    <div style="font-size:.78rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.875rem">All 4 category templates</div>
+    <div class="poster-all-grid">
+      <div><div class="poster p-dark" style="min-height:260px"><div class="p-blob" style="width:120px;height:120px;background:var(--coral);top:-30px;right:-30px;opacity:.12"></div><div><div class="p-eyebrow">Unite Students</div><div class="p-badge">Competitive</div><div class="p-title">Quiz<br>Night</div><div class="p-line"></div><div class="p-detail">5 rounds · Teams of 4<br>Prizes for 1st &amp; 2nd</div></div><div><div class="p-cta">Sign up at reception</div><div class="p-footer"><span>[DATE] · [TIME]</span><div class="p-qr">QR<br>CODE</div></div></div></div><div class="poster-thumb-label">A · Dark / Competitive</div></div>
+      <div><div class="poster p-coral" style="min-height:260px"><div class="p-blob" style="width:150px;height:150px;background:white;bottom:-60px;right:-50px;opacity:.08"></div><div><div class="p-eyebrow">Unite Students</div><div class="p-badge">Creative</div><div class="p-title">Art<br>Night</div><div class="p-line"></div><div class="p-detail">All materials provided<br>No experience needed</div></div><div><div class="p-cta">Just show up</div><div class="p-footer"><span>[DATE] · [TIME]</span><div class="p-qr">QR<br>CODE</div></div></div></div><div class="poster-thumb-label">B · Coral / Creative</div></div>
+      <div><div class="poster p-forest" style="min-height:260px"><div class="p-blob" style="width:130px;height:130px;background:#00BFA5;top:-40px;left:-30px;opacity:.12"></div><div><div class="p-eyebrow">Unite Students</div><div class="p-badge">Social</div><div class="p-title">Snacks<br>Night</div><div class="p-line"></div><div class="p-detail">Food from around the world<br>Free drinks provided</div></div><div><div class="p-cta">Bring something, try everything</div><div class="p-footer"><span>[DATE] · [TIME]</span><div class="p-qr">QR<br>CODE</div></div></div></div><div class="poster-thumb-label">C · Forest / Social</div></div>
+      <div><div class="poster p-purple" style="min-height:260px"><div class="p-blob" style="width:160px;height:160px;background:#CE93D8;bottom:-60px;right:-50px;opacity:.1"></div><div><div class="p-eyebrow">Unite Students</div><div class="p-badge">Workshop</div><div class="p-title">Make<br>&amp; Take</div><div class="p-line"></div><div class="p-detail">Create something, keep it<br>All materials included</div></div><div><div class="p-cta">Leave with what you made</div><div class="p-footer"><span>[DATE] · [TIME]</span><div class="p-qr">QR<br>CODE</div></div></div></div><div class="poster-thumb-label">D · Purple / Workshop</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- INVENTORY -->
+<div class="section" id="inventory">
+  <div class="section-hd">
+    <div class="section-lbl">Operations</div>
+    <div class="section-title">Inventory & Event Log</div>
+    <div class="section-desc">Track materials your building has in stock and log post-event notes for future planning.</div>
+  </div>
+  <div class="inv-card">
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.875rem">Building Inventory</div>
+    <div id="inv-table-wrap"></div>
+    <div class="inv-add-row">
+      <input type="text" id="inv-name" placeholder="Item name">
+      <input type="number" id="inv-qty" placeholder="Qty" style="max-width:70px" min="0">
+      <input type="text" id="inv-notes-input" placeholder="Notes (optional)">
+      <button onclick="addInventoryItem()">+ Add</button>
+    </div>
+  </div>
+  <div class="inv-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem;flex-wrap:wrap;gap:.5rem">
+      <div style="font-weight:600;font-size:.92rem">Event Completion Log</div>
+    </div>
+    <div id="event-log-wrap">
+      <div style="font-size:.84rem;color:var(--muted);text-align:center;padding:1.5rem;background:var(--page);border-radius:10px">No events logged yet. When you mark an event as "Done", you'll be prompted to log details here.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ENGAGEMENT -->
+<div class="section" id="engagement">
+  <div class="section-hd">
+    <div class="section-lbl">Strategy</div>
+    <div class="section-title">Engagement &amp; Turnout</div>
+    <div class="section-desc">Practical tactics for getting students to actually show up — and stay.</div>
+  </div>
+  <div class="engage-grid">
+    <div class="engage-card">
+      <div class="engage-title">How to Get People to Show Up</div>
+      <ul class="tip-list">
+        <li><div class="tip-num">1</div><div><strong>Lead with what's free.</strong> Free soft drinks, free craft item, free snacks — put it in the subject line.</div></li>
+        <li><div class="tip-num">2</div><div><strong>Run the survey first.</strong> Asking "what do YOU want?" before announcing events creates ownership.</div></li>
+        <li><div class="tip-num">3</div><div><strong>Scarcity framing.</strong> "Only 12 spots" consistently outperforms open-ended invites.</div></li>
+        <li><div class="tip-num">4</div><div><strong>Knock on doors.</strong> A personal invite beats any email. Two minutes of contact is worth three email blasts.</div></li>
+        <li><div class="tip-num">5</div><div><strong>Post photos after events.</strong> Photos on the noticeboard normalise participation and build FOMO.</div></li>
+        <li><div class="tip-num">6</div><div><strong>Wednesday evenings or Sunday afternoons.</strong> Highest-turnout windows in student accommodation.</div></li>
+      </ul>
+    </div>
+    <div class="engage-card">
+      <div class="engage-title">Pre-Event Interest Survey</div>
+      <p style="font-size:.83rem;color:var(--muted);margin-bottom:.875rem">Send this before planning your first event — gives you real data and makes students feel heard.</p>
+      <div class="survey-q"><div class="survey-q-txt">What type of events interest you most?</div><div class="survey-q-type">Multi-select: Creative / Competitive / Cultural / Relaxed / Active</div></div>
+      <div class="survey-q"><div class="survey-q-txt">What day/time works best?</div><div class="survey-q-type">Multi-select: Weekday evening / Weekend afternoon / Weekend evening</div></div>
+      <div class="survey-q"><div class="survey-q-txt">What would make you more likely to attend?</div><div class="survey-q-type">Multi-select: Free food/drinks / Prizes / Meeting people / Learning something / Just fun</div></div>
+      <div class="survey-q"><div class="survey-q-txt">Any dietary requirements we should know about?</div><div class="survey-q-type">Open text — important for food events</div></div>
+      <div class="survey-q"><div class="survey-q-txt">Is there an event you'd love to see happen?</div><div class="survey-q-type">Open text — great for future planning</div></div>
+      <div class="survey-box">
+        <div class="survey-box-title">Free survey tools</div>
+        <div class="survey-box-desc">All shareable by link or QR code</div>
+        <div class="plat-links">
+          <a href="https://forms.google.com" target="_blank" class="plat-btn">Google Forms</a>
+          <a href="https://typeform.com" target="_blank" class="plat-btn">Typeform</a>
+          <a href="https://www.mentimeter.com" target="_blank" class="plat-btn">Mentimeter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  Unite Students — Event Planning Hub · Created by Francesco Sorriento · <a href="mailto:francesco.sorriento@unitestudents.com" style="color:var(--teal)">francesco.sorriento@unitestudents.com</a> · <span style="color:var(--teal)">Your data saves locally in this browser</span>
+</footer>
+
+<!-- WELCOME MODAL -->
+<div class="welcome-overlay" id="welcome-overlay">
+  <div class="welcome-modal">
+    <h2>Welcome to the Event Planning Hub! 👋</h2>
+    <div class="wm-sub">Let's set up your building profile. This personalises the tool for your team — you can change everything later.</div>
+    <div class="wm-field"><label>Your building name</label><input type="text" id="wm-building" placeholder="e.g. Unite Students Bristol"></div>
+    <div class="wm-field"><label>Monthly event budget (£)</label><input type="number" id="wm-budget" value="350" min="0" step="50"></div>
+    <div class="wm-field"><label>Number of months to plan</label><input type="number" id="wm-months" value="2" min="1" max="12"></div>
+    <div class="wm-field">
+      <label>Available rooms (click to toggle)</label>
+      <div class="wm-rooms" id="wm-rooms"></div>
+    </div>
+    <button class="wm-save" onclick="saveWelcome()">Get Started →</button>
+  </div>
+</div>
+
+<!-- EVENT DETAIL MODAL -->
+<div class="overlay" id="modal-overlay" onclick="closeModalOuter(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hd" id="modal-hd">
+      <div class="modal-icon" id="modal-icon"></div>
+      <div><div style="font-weight:600;font-size:1.2rem;margin-bottom:.2rem" id="modal-title"></div><div style="font-size:.8rem;color:var(--muted)" id="modal-subtitle"></div></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- EVENT MANAGER MODAL -->
+<div class="mgr-overlay" id="mgr-overlay" onclick="closeMgrOuter(event)">
+  <div class="mgr-modal">
+    <div class="mgr-hd">
+      <div class="mgr-hd-left"><div class="mgr-title" id="mgr-title">Create New Event</div><div class="mgr-subtitle" id="mgr-subtitle">Fills into Events, Prep Planner, Emails, and Posters automatically</div></div>
+      <button class="mgr-close" onclick="closeMgr()">✕</button>
+    </div>
+    <div class="mgr-body">
+      <div class="mgr-tabs">
+        <button class="mgr-tab active" id="tab-create" onclick="switchMgrTab('create')">Create / Edit</button>
+        <button class="mgr-tab" id="tab-restore" onclick="switchMgrTab('restore')">Restore Hidden</button>
+      </div>
+      <div class="mgr-pane active" id="pane-create">
+        <input type="hidden" id="mgr-edit-id" value="">
+        <div class="mgr-form-grid">
+          <div class="mgr-field"><label>Event name</label><input class="mgr-input" id="mgr-name" placeholder="e.g. Origami Evening" oninput="mgrAutoEmail()"></div>
+          <div class="mgr-field"><label>Category</label><select class="mgr-select" id="mgr-cat" onchange="mgrAutoEmail()"><option value="competitive">Competitive</option><option value="creative">Creative</option><option value="social">Social</option><option value="cultural">Cultural</option></select></div>
+          <div class="mgr-field"><label>Venue</label><select class="mgr-select" id="mgr-venue"></select></div>
+          <div class="mgr-field"><label>Icon</label><div class="icon-picker" id="icon-picker"><span class="icon-opt selected" onclick="pickIcon(this)" data-icon="🎯">🎯</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🎨">🎨</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🎤">🎤</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🎲">🎲</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🧩">🧩</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🌍">🌍</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="📷">📷</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🔍">🔍</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🎭">🎭</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🍕">🍕</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🎵">🎵</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="⚡">⚡</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🌱">🌱</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="✏️">✏️</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="🏆">🏆</span><span class="icon-opt" onclick="pickIcon(this)" data-icon="💡">💡</span></div></div>
+          <div class="mgr-field"><label>Duration</label><input class="mgr-input" id="mgr-duration" placeholder="e.g. 90 min"></div>
+          <div class="mgr-field"><label>Expected headcount</label><input class="mgr-input" id="mgr-people" placeholder="e.g. 10–20"></div>
+          <div class="mgr-field"><label>Estimated cost (£)</label><input class="mgr-input" id="mgr-cost" type="number" min="0" placeholder="0" oninput="mgrAutoEmail()"></div>
+          <div class="mgr-field"><label>Reusable materials value (£)</label><input class="mgr-input" id="mgr-reusable" type="number" min="0" placeholder="0"></div>
+          <div class="mgr-field full"><label>Short description (card preview, max 150 chars)</label><input class="mgr-input" id="mgr-short" placeholder="One-sentence hook" oninput="mgrAutoEmail()"></div>
+          <div class="mgr-field full"><label>Full description (detail view)</label><textarea class="mgr-textarea tall" id="mgr-full" placeholder="Full explanation of how the event runs..." oninput="mgrAutoEmail()"></textarea></div>
+          <div class="mgr-field full"><label>Prize description</label><input class="mgr-input" id="mgr-prize" placeholder="e.g. £20 Amazon voucher" oninput="mgrAutoEmail()"></div>
+          <div class="mgr-field full"><label>Allergen &amp; inclusion notes</label><textarea class="mgr-textarea" id="mgr-allergy" placeholder="Dietary, allergen, or accessibility notes..."></textarea></div>
+          <div class="mgr-field full"><label>Tips for running this event</label><textarea class="mgr-textarea" id="mgr-tips" placeholder="Practical advice for whoever runs it..."></textarea></div>
+          <div class="mgr-field full"><label>Materials list (name, cost, Amazon link, reusable?)</label><div class="mat-rows" id="mgr-mat-rows"></div><button class="btn-add-mat" onclick="addMatRow()">+ Add material</button></div>
+        </div>
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+          <div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.75rem">Email template</div>
+          <div class="mgr-warn">⚠ Always triple-check the email before sending — verify event name, date, time, venue, and RSVP link.</div>
+          <div style="margin-bottom:.5rem"><label style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Subject line</label><input class="mgr-input" id="mgr-email-subj" placeholder="Email subject line" style="margin-top:.35rem"></div>
+          <div class="email-sidebyside">
+            <div><div class="email-panel-label">Auto-generated draft <span onclick="useGenerated()">→ Use this →</span></div><div class="email-preview-box" id="mgr-email-preview">Fill in the event details above to generate a draft...</div></div>
+            <div><div class="email-panel-label">Your editable version</div><textarea class="email-edit-box" id="mgr-email-body" placeholder="Edit or write your email here..."></textarea></div>
+          </div>
+        </div>
+        <div class="mgr-actions">
+          <div class="mgr-actions-left"><button class="btn-mgr-save" onclick="saveEvent()">Save Event</button><button class="btn-mgr-cancel" onclick="closeMgr()">Cancel</button></div>
+          <button class="btn-mgr-delete" id="mgr-delete-btn" style="display:none" onclick="deleteEvent()">Hide this event</button>
+        </div>
+      </div>
+      <div class="mgr-pane" id="pane-restore"><div id="restore-list-wrap"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPLETION MODAL -->
+<div class="completion-overlay" id="completion-overlay" onclick="if(event.target===this)closeCompletion()">
+  <div class="completion-modal">
+    <h3>🎉 Event Complete!</h3>
+    <p>Log some details for your building's records — this helps with future planning.</p>
+    <input type="hidden" id="comp-event-id">
+    <div class="completion-field"><label>Event name</label><input type="text" id="comp-name" readonly></div>
+    <div class="completion-field"><label>Date</label><input type="date" id="comp-date"></div>
+    <div class="completion-field"><label>Attendance</label><input type="number" id="comp-attendance" placeholder="How many people came?" min="0"></div>
+    <div class="completion-field"><label>Rating</label><div class="stars" id="comp-stars"></div></div>
+    <div class="completion-field"><label>Notes (what worked, what didn't, materials used)</label><textarea id="comp-notes" placeholder="e.g. Ordered too many blindfolds, 15 people showed up, great energy..."></textarea></div>
+    <div class="completion-btns">
+      <button style="background:var(--teal);color:white" onclick="saveCompletion()">Save to log</button>
+      <button style="background:var(--page);color:var(--ink);border:1px solid var(--border)" onclick="closeCompletion()">Skip</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK MODAL -->
+<div class="feedback-overlay" id="feedback-overlay" onclick="if(event.target===this)closeFeedback()">
+  <div class="feedback-modal">
+    <h3>💬 Send Feedback</h3>
+    <p>Suggestions, improvements, or bug reports — all welcome! This helps make the planner better for everyone.</p>
+    <div id="fb-form-content">
+      <div class="fb-field"><label>Your name</label><input type="text" id="fb-name" placeholder="Your name"></div>
+      <div class="fb-field"><label>Building</label><input type="text" id="fb-building" placeholder="Your building name"></div>
+      <div class="fb-field"><label>Type</label><select id="fb-type"><option>Suggestion</option><option>Bug report</option><option>Feature request</option><option>General feedback</option></select></div>
+      <div class="fb-field"><label>Message</label><textarea id="fb-message" placeholder="What's on your mind?"></textarea></div>
+      <div class="fb-btns">
+        <button style="background:var(--coral);color:white" onclick="submitFeedback()">Send feedback</button>
+        <button style="background:var(--page);color:var(--ink);border:1px solid var(--border)" onclick="closeFeedback()">Cancel</button>
+      </div>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:.75rem">Feedback goes to francesco.sorriento@unitestudents.com</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── STORAGE HELPERS ── */
+function lsGet(k,fb){try{const v=localStorage.getItem(k);return v!==null?JSON.parse(v):fb}catch{return fb}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+
+/* ── BUILDING PROFILE ── */
+const DEFAULT_ROOMS=[
+  {id:"cinema",name:"Cinema Room",icon:"🎬",desc:"~10 capacity · Intimate events",active:true},
+  {id:"common",name:"Common Room",icon:"🛋",desc:"Sizeable space · Moveable furniture",active:true},
+  {id:"games",name:"Games Room",icon:"🎮",desc:"Gaming & social space",active:false},
+  {id:"study",name:"Study Room",icon:"📚",desc:"Quiet space · Smaller groups",active:false},
+  {id:"kitchen",name:"Kitchen / Communal",icon:"🍳",desc:"Cooking & food prep area",active:false},
+  {id:"courtyard",name:"Courtyard / Outdoor",icon:"🌿",desc:"Outdoor events & BBQs",active:false},
+  {id:"rooftop",name:"Rooftop Terrace",icon:"🏙",desc:"Views & open-air events",active:false},
+  {id:"gym",name:"Gym / Fitness Room",icon:"💪",desc:"Active & fitness events",active:false},
+  {id:"lobby",name:"Lobby / Reception",icon:"🏢",desc:"High-traffic area",active:false}
+];
+
+let profile = lsGet("ubs_profile", null);
+let rooms = lsGet("ubs_rooms", null);
+let budgetSettings = lsGet("ubs_budget_settings", {monthly:350, months:2});
+
+function getBudgetTotal(){ return budgetSettings.monthly * budgetSettings.months; }
+
+function initRooms(){
+  if(!rooms){
+    rooms = DEFAULT_ROOMS.map(r=>({...r}));
+    lsSet("ubs_rooms", rooms);
+  }
+}
+
+/* ── DARK MODE ── */
+function toggleDark(){
+  const d = document.documentElement;
+  const isDark = d.getAttribute("data-theme")==="dark";
+  d.setAttribute("data-theme", isDark?"":"dark");
+  lsSet("ubs_dark", !isDark);
+  document.getElementById("dark-btn").textContent = isDark?"🌙":"☀️";
+}
+function initDark(){
+  if(lsGet("ubs_dark",false)){
+    document.documentElement.setAttribute("data-theme","dark");
+    document.getElementById("dark-btn").textContent="☀️";
+  }
+}
+
+/* ── WELCOME FLOW ── */
+function showWelcome(){
+  const wRooms = document.getElementById("wm-rooms");
+  wRooms.innerHTML = DEFAULT_ROOMS.map(r =>
+    `<div class="wm-room-chip${r.active?" active":""}" data-id="${r.id}" onclick="this.classList.toggle('active')">${r.icon} ${r.name}</div>`
+  ).join("");
+  document.getElementById("welcome-overlay").classList.add("open");
+}
+function saveWelcome(){
+  const bName = document.getElementById("wm-building").value.trim()||"Unite Students";
+  const bBudget = parseInt(document.getElementById("wm-budget").value)||350;
+  const bMonths = parseInt(document.getElementById("wm-months").value)||2;
+  const activeChips = document.querySelectorAll("#wm-rooms .wm-room-chip.active");
+  const activeIds = new Set([...activeChips].map(c=>c.dataset.id));
+  profile = {building: bName, setupDone: true};
+  budgetSettings = {monthly: bBudget, months: bMonths};
+  rooms = DEFAULT_ROOMS.map(r=>({...r, active: activeIds.has(r.id)}));
+  lsSet("ubs_profile", profile);
+  lsSet("ubs_budget_settings", budgetSettings);
+  lsSet("ubs_rooms", rooms);
+  document.getElementById("welcome-overlay").classList.remove("open");
+  applyProfile();
+  refreshAll();
+}
+
+function applyProfile(){
+  const bName = profile ? profile.building : "Unite Students";
+  document.getElementById("header-building-name").textContent = bName;
+  document.getElementById("hero-building-title").textContent = bName;
+  document.title = bName + " — Event Planning Hub";
+  document.getElementById("budget-monthly-input").value = budgetSettings.monthly;
+  document.getElementById("budget-months-input").value = budgetSettings.months;
+  renderVenueCards();
+  renderRoomPresets();
+  populateVenueDropdown();
+}
+
+/* ── ROOM MANAGEMENT ── */
+function renderVenueCards(){
+  const wrap = document.getElementById("venue-cards-list");
+  const active = rooms.filter(r=>r.active);
+  wrap.innerHTML = active.map(r=>
+    `<div class="venue-card"><div class="vc-icon">${r.icon}</div><div><div class="vc-title">${r.name}</div><div class="vc-desc">${r.desc}</div></div></div>`
+  ).join("") || '<div style="font-size:.8rem;opacity:.4;padding:.5rem">No rooms selected — click Edit rooms to add some</div>';
+}
+
+function renderRoomPresets(){
+  const wrap = document.getElementById("room-presets");
+  wrap.innerHTML = rooms.map(r=>
+    `<div class="room-chip${r.active?" active":""}" data-id="${r.id}" onclick="toggleRoom('${r.id}')">${r.icon} ${r.name}</div>`
+  ).join("");
+}
+
+function toggleRoom(id){
+  const r = rooms.find(x=>x.id===id);
+  if(r){ r.active = !r.active; lsSet("ubs_rooms",rooms); renderVenueCards(); renderRoomPresets(); populateVenueDropdown(); }
+}
+
+function addCustomRoom(){
+  const input = document.getElementById("custom-room-input");
+  const name = input.value.trim();
+  if(!name) return;
+  const id = "custom_"+Date.now();
+  rooms.push({id,name,icon:"📍",desc:"Custom room",active:true});
+  lsSet("ubs_rooms",rooms);
+  input.value="";
+  renderVenueCards(); renderRoomPresets(); populateVenueDropdown();
+}
+
+function toggleRoomEditor(){
+  document.getElementById("room-editor").classList.toggle("open");
+}
+
+function populateVenueDropdown(){
+  const sel = document.getElementById("mgr-venue");
+  sel.innerHTML = rooms.filter(r=>r.active).map(r=>`<option value="${r.name}">${r.name}</option>`).join("")
+    + '<option value="Outdoors">Outdoors</option><option value="TBC">TBC</option>';
+}
+
+/* ── BUDGET EDIT ── */
+function toggleBudgetEdit(){ document.getElementById("budget-edit-row").classList.toggle("open"); }
+function saveBudgetSettings(){
+  budgetSettings.monthly = parseInt(document.getElementById("budget-monthly-input").value)||350;
+  budgetSettings.months = parseInt(document.getElementById("budget-months-input").value)||2;
+  lsSet("ubs_budget_settings", budgetSettings);
+  document.getElementById("budget-edit-row").classList.remove("open");
+  refreshAll();
+}
+
+/* ── CORE EVENT DATA ── */
+const EVENTS=[
+  {id:1,name:"Blind Taste Test Night",icon:"🫧",cat:"competitive",venue:"Common Room",short:"Teams compete blindfolded to identify unusual soft drinks — kombucha, Fentiman's, Fever-Tree. Points, prizes, reactions.",full:"Set up stations around the common room. Teams of 2–3 are blindfolded and given small tasting cups of unusual soft drinks. They write guesses — score points for correct answers. Mix obvious (Sprite, Coke) and tricky (elderflower kombucha, Fever-Tree Ginger Beer, Fentiman's Rose Lemonade). Run 8–10 rounds. Announce each drink after the guess round. Final tiebreaker speed round settles close scores.",duration:"90 min",people:"10–20",cost:55,reusable:8,materials:[{n:"Fentiman's, Fever-Tree, Bottlegreen variety soft drinks",c:"~£30",url:"https://www.amazon.co.uk/s?k=fentimans+fever-tree+bottlegreen+soft+drinks+variety",reuse:false},{n:"Sleep eye masks / blindfolds (10-pack)",c:"~£8",url:"https://www.amazon.co.uk/s?k=sleep+eye+mask+blindfold+10+pack",reuse:true},{n:"Small plastic tasting cups (100-pack)",c:"~£5",url:"https://www.amazon.co.uk/s?k=small+plastic+shot+cups+100+pack",reuse:false},{n:"Score sheets + clipboards",c:"~£5",url:"https://www.amazon.co.uk/s?k=clipboard+bulk+pack",reuse:true}],prize:"£15–£20 Amazon/Deliveroo voucher for winning team",allergy:"Check every drink for sulphites and common allergens. Announce full ingredient list after each reveal. Water station for palette cleansing.",tip:"Keep drinks chilled. Do 1–2 practice rounds with obvious drinks to warm up. Use a whiteboard to display cumulative scores between rounds for drama.",posterCat:"competitive",posterCopy:{headline:"BLIND TASTE TEST NIGHT",sub:"Can you tell what you're drinking?",body:"Teams. Blindfolds. Unusual soft drinks.\nPoints for every correct guess.\nFentiman's. Kombucha. Fever-Tree.",free:"Free soft drinks all evening",prize:"Prizes for the winning team",cta:"Sign up at reception or scan to RSVP"}},
+  {id:2,name:"Art Dupe Challenge",icon:"🎨",cat:"creative",venue:"Common Room",short:"Three famous paintings at different difficulties. Participants copy one in an hour. Cross-bracket voting crowns the winner.",full:"Print or project three famous paintings at easy, medium, and hard difficulty. Participants choose a difficulty and spend 60–75 minutes copying. At the end, participants in each tier vote for the best work in the tier above. Prize value scales with difficulty.",duration:"2 hours",people:"8–16",cost:90,reusable:55,materials:[{n:"Canvas + tabletop easel set (10-pack)",c:"~£30",url:"https://www.amazon.co.uk/s?k=canvas+tabletop+easel+set+10+pack",reuse:true},{n:"Acrylic paint set (30 colours)",c:"~£18",url:"https://www.amazon.co.uk/s?k=acrylic+paint+set+30+colours",reuse:true},{n:"Paint brushes mixed set (20-pack)",c:"~£10",url:"https://www.amazon.co.uk/s?k=paint+brushes+set+20+pack+acrylic",reuse:true},{n:"Disposable aprons (20-pack)",c:"~£8",url:"https://www.amazon.co.uk/s?k=disposable+aprons+20+pack",reuse:false},{n:"Paint palettes (10-pack)",c:"~£8",url:"https://www.amazon.co.uk/s?k=plastic+paint+palette+set+10",reuse:true},{n:"Reference prints (A3)",c:"~£4",url:null,reuse:false}],prize:"£20 (hard), £15 (medium), £10 (easy)",allergy:"Ensure paint is non-toxic. Provide aprons. Lay newspaper under easels.",tip:"Put on background music. Give a 5-min study window before the clock starts. Display finished works during voting.",posterCat:"creative",posterCopy:{headline:"ART DUPE CHALLENGE",sub:"Can you copy a masterpiece?",body:"Three famous paintings. Three difficulty levels.\nChoose yours, pick up your canvas, and try your best.\nAll materials provided.",free:"Free entry — all materials included",prize:"Prizes for winners in every bracket",cta:"Sign up at reception or scan to RSVP"}},
+  {id:3,name:"Big Quiz Night",icon:"🧠",cat:"competitive",venue:"Common Room",short:"5-round team quiz with buzzers, scoreboard, and tiebreakers. Bristol knowledge, pop culture, science, music clips, wildcard.",full:"Teams of 3–4 across 5 rounds of 10 questions. Rounds: Bristol knowledge, Pop culture, Science & nature, Name that tune, Wildcard picture round. Buzzers for speed-bonus questions. Sudden-death buzzer tiebreaker for top 2 teams.",duration:"2 hours",people:"12–30",cost:55,reusable:30,materials:[{n:"Game show quiz buzzers (4-pack)",c:"~£15",url:"https://www.amazon.co.uk/s?k=game+show+quiz+buzzer+set+4+pack",reuse:true},{n:"Answer pads / notepads (bulk)",c:"~£5",url:"https://www.amazon.co.uk/s?k=small+notepad+bulk+pack",reuse:false},{n:"Pens (20-pack)",c:"~£5",url:"https://www.amazon.co.uk/s?k=bic+pens+20+pack",reuse:true},{n:"Small whiteboard for scores",c:"~£10",url:"https://www.amazon.co.uk/s?k=small+whiteboard+A2",reuse:true},{n:"Prize vouchers",c:"~£30",url:"https://www.amazon.co.uk/s?k=amazon+gift+card",reuse:false}],prize:"£20 Amazon voucher for 1st, £10 for 2nd",allergy:"N/A",tip:"Bluetooth speaker for music round. Appoint impartial question master. Pre-test questions for ambiguity.",posterCat:"competitive",posterCopy:{headline:"BIG QUIZ NIGHT",sub:"5 rounds. 1 winner. No mercy.",body:"Form a team of 3–4 and go head to head.\nBristol knowledge · Pop culture · Science · Music · Wildcard.\nBuzzer tiebreaker for the top two.",free:"Free soft drinks all evening",prize:"£20 voucher for 1st · £10 for 2nd",cta:"Register your team or scan to RSVP"}},
+  {id:4,name:"Resin Art Workshop",icon:"🌊",cat:"creative",venue:"Common Room",short:"Each student makes their own resin coaster to keep. Guided step-by-step. Silicone moulds reusable — costs drop on repeat.",full:"Set up crafting station per person with silicone coaster mould, gloves, mixing sticks. Demo the 1:1 resin mixing and colour technique. Students add mica pigments, glitter, dried flowers. 15–20 min to pour, 24h cure. Moulds fully reusable. Ensure good ventilation.",duration:"90 min + 24h cure",people:"8–14",cost:85,reusable:40,materials:[{n:"Epoxy resin kit (1L, includes hardener)",c:"~£25",url:"https://www.amazon.co.uk/s?k=epoxy+resin+kit+1L+crystal+clear",reuse:false},{n:"Silicone coaster moulds (6-pack, reusable)",c:"~£12",url:"https://www.amazon.co.uk/s?k=silicone+coaster+mould+set+round",reuse:true},{n:"Mica powder pigment set (12 colours)",c:"~£10",url:"https://www.amazon.co.uk/s?k=mica+powder+pigment+set+resin",reuse:true},{n:"Nitrile gloves (50-pack)",c:"~£7",url:"https://www.amazon.co.uk/s?k=nitrile+gloves+50+pack",reuse:false},{n:"Wooden mixing sticks (100-pack)",c:"~£5",url:"https://www.amazon.co.uk/s?k=wooden+lolly+sticks+mixing+100",reuse:false},{n:"Dried flowers / glitter mix",c:"~£8",url:"https://www.amazon.co.uk/s?k=dried+flowers+resin+craft+mix",reuse:true},{n:"Plastic measuring cups",c:"~£5",url:"https://www.amazon.co.uk/s?k=plastic+measuring+cups+craft",reuse:true}],prize:"Everyone keeps their coaster",allergy:"Resin can irritate sensitive skin. Gloves must be worn. Ventilate the room.",tip:"Demo pour first. Have kitchen roll and baby wipes ready. Play relaxed music. Photographs brilliantly for social posts.",posterCat:"creative",posterCopy:{headline:"RESIN ART NIGHT",sub:"Make something. Keep something.",body:"Pour, mix, and customise your own resin coaster.\nAdd pigments, glitter, dried flowers — make it yours.",free:"All materials provided — free to attend",prize:"You leave with something you made",cta:"Sign up at reception or scan to RSVP"}},
+  {id:5,name:"Board Game Gauntlet",icon:"🎲",cat:"social",venue:"Common Room",short:"Bracket-style tournament across multiple board games. Mixed teams, rotating tables, one overall champion.",full:"3–4 tables running different games: Catan, Uno, Ticket to Ride, Codenames. Teams rotate on a bracket system collecting points. Top scorers face off in championship round. Different games favour different skills.",duration:"2.5–3 hours",people:"12–24",cost:80,reusable:75,materials:[{n:"Catan board game",c:"~£38",url:"https://www.amazon.co.uk/s?k=catan+board+game",reuse:true},{n:"Ticket to Ride Europe",c:"~£32",url:"https://www.amazon.co.uk/s?k=ticket+to+ride+europe+board+game",reuse:true},{n:"Codenames board game",c:"~£16",url:"https://www.amazon.co.uk/s?k=codenames+board+game",reuse:true},{n:"Uno card game",c:"~£7",url:"https://www.amazon.co.uk/s?k=uno+card+game",reuse:true}],prize:"£20 Amazon voucher for overall winner. Games kept as common room assets.",allergy:"N/A",tip:"Assign one games master per table. Printed rule summaries. 10-min practice round before tournament.",posterCat:"competitive",posterCopy:{headline:"BOARD GAME GAUNTLET",sub:"Multiple games. One champion.",body:"Catan · Ticket to Ride · Codenames · Uno\nBracket tournament — rotate tables, collect points.",free:"Free soft drinks all evening",prize:"£20 voucher for the overall winner",cta:"Sign up at reception or scan to RSVP"}},
+  {id:6,name:"Throwback Karaoke Night",icon:"🎤",cat:"social",venue:"Common Room",short:"Team karaoke with 3 prize categories: Best Performance, Most Enthusiastic, Wildcard. Audience votes.",full:"Teams of 2–3 choose from a curated list. Audience votes for Best Performance, Most Enthusiastic, and Wildcard. YouTube karaoke catalogue. Bluetooth mic and speaker at the front.",duration:"2 hours",people:"12–30",cost:55,reusable:45,materials:[{n:"Bluetooth karaoke microphone with speaker",c:"~£35",url:"https://www.amazon.co.uk/s?k=bluetooth+karaoke+microphone+speaker",reuse:true},{n:"Karaoke LED party lights (USB)",c:"~£10",url:"https://www.amazon.co.uk/s?k=LED+party+light+USB+karaoke",reuse:true},{n:"Song list printout (laminated A4)",c:"~£4",url:"https://www.amazon.co.uk/s?k=a4+laminator+pouches",reuse:true},{n:"Prize vouchers (3 categories)",c:"~£30",url:"https://www.amazon.co.uk/s?k=amazon+gift+card",reuse:false}],prize:"£10–£15 per category (3 winners)",allergy:"N/A",tip:"Curate 25–30 songs in advance. Host performs warm-up track first to break ice.",posterCat:"social",posterCopy:{headline:"THROWBACK KARAOKE NIGHT",sub:"The mic is open. No experience required.",body:"Teams of 2–3 pick a song and perform.\nAudience votes. Three winners. Three prizes.",free:"Free soft drinks all evening",prize:"£10–15 voucher per prize category",cta:"Sign up your team or scan to RSVP"}},
+  {id:7,name:"International Snacks Night",icon:"🌍",cat:"cultural",venue:"Common Room",short:"Students bring something from their home country. Soft drinks and decorations provided. Contributing flats reimbursed up to £8.",full:"Cultural exchange — invite flats to bring one food/snack from their home country. Display table with flag labels and ingredient cards. Provide soft drinks, juices, decorations. Reimburse contributing flats up to £8 on receipt. Allergen labelling critical.",duration:"2 hours",people:"15–30",cost:70,reusable:15,materials:[{n:"World flags bunting",c:"~£8",url:"https://www.amazon.co.uk/s?k=world+flags+bunting+decoration",reuse:true},{n:"Country flag cocktail picks (100-pack)",c:"~£6",url:"https://www.amazon.co.uk/s?k=country+flag+cocktail+picks+100",reuse:false},{n:"Blank label tent cards",c:"~£5",url:"https://www.amazon.co.uk/s?k=table+tent+cards+blank+white",reuse:true},{n:"Soft drinks & juices",c:"~£25",url:"https://www.amazon.co.uk/s?k=soft+drinks+variety+pack",reuse:false},{n:"Flat reimbursements (up to 3×£8)",c:"~£24 max",url:null,reuse:false}],prize:"Reimbursement + optional community vote £10 voucher",allergy:"CRITICAL: Ingredient cards for every dish. Announce check-labels rule at start. Water station accessible.",tip:"Send invite 2 weeks early. Reach out to international flats individually first. Works best with 5+ contributing flats.",posterCat:"social",posterCopy:{headline:"INTERNATIONAL SNACKS NIGHT",sub:"What does home taste like?",body:"Bring a food or snack from your home country.\nTry dishes from all over the world.",free:"Free drinks · Contributing flats reimbursed up to £8",prize:"Community vote for most popular dish",cta:"RSVP and let us know what you're bringing"}},
+  {id:8,name:"Murder Mystery Evening",icon:"🔍",cat:"competitive",venue:"Cinema Room",short:"Students assigned suspect roles, solve a murder. Teams build cases, question each other, vote on the culprit.",full:"Cinema room for intimate experience (~10 capacity). Purchase murder mystery party pack. Assign roles via email 24h before. 3 acts: introductions & clues, open questioning, final accusations & reveal. Host narrates between acts. Group votes on suspect at end.",duration:"2.5 hours",people:"8–14",cost:30,reusable:20,materials:[{n:"Murder mystery party game kit",c:"~£15",url:"https://www.amazon.co.uk/s?k=murder+mystery+dinner+party+game+kit",reuse:true},{n:"Name badge holders + lanyards (10-pack)",c:"~£6",url:"https://www.amazon.co.uk/s?k=name+badge+holder+lanyard+pack",reuse:true},{n:"Costume accessories",c:"~£8",url:"https://www.amazon.co.uk/s?k=murder+mystery+costume+props",reuse:true}],prize:"£15–£20 voucher for correct solver(s)",allergy:"N/A",tip:"Email character sheets 24h before. Physical copy on night too. Themed pack encourages dressing up.",posterCat:"competitive",posterCopy:{headline:"MURDER MYSTERY NIGHT",sub:"Someone in this building has been murdered.",body:"Receive your character before the event.\nQuestion suspects. Trade clues. Build your case.",free:"Free entry · Cinema Room — invite only",prize:"Voucher prize for the correct solver",cta:"Limited to 14 people — scan to RSVP"}},
+  {id:9,name:"Bristol Photo Walk",icon:"📷",cat:"social",venue:"Outdoors",short:"Group walk around Bristol with a theme. Students submit best 2–3 photos. Community vote for winner displayed in the building.",full:"Group walk with a photography mission. Set a theme (e.g. 'Bristol in colour'). Students submit 2–3 best photos after the walk. Print and display all submissions, community votes over 1 week. Low cost, strong community-building. No equipment needed beyond a phone.",duration:"3 hours",people:"8–20",cost:25,reusable:0,materials:[{n:"Photo printing (20 prints)",c:"~£12",url:"https://www.amazon.co.uk/s?k=photo+printing+service",reuse:false},{n:"Display board / string + mini pegs",c:"~£8",url:"https://www.amazon.co.uk/s?k=photo+display+string+pegs",reuse:true},{n:"Prize voucher",c:"~£15",url:"https://www.amazon.co.uk/s?k=amazon+gift+card",reuse:false}],prize:"£15–20 voucher for community vote winner",allergy:"For people photography — ensure consent rules. Non-issue for landscape themes.",tip:"Send 1-page brief: theme, do's/don'ts, deadline, example shots. Best timed April–May when Bristol looks its best.",posterCat:"social",posterCopy:{headline:"BRISTOL PHOTO WALK",sub:"Walk. Shoot. Win.",body:"Join a group walk around Bristol with a mission.\nSubmit your best 2 photos — the community votes.",free:"Free to join — just bring your phone",prize:"£15–20 voucher for the winner",cta:"RSVP and meet at [MEETING POINT]"}},
+  {id:10,name:"Tote Bag Workshop",icon:"🎒",cat:"creative",venue:"Common Room",short:"Each student designs their own canvas tote bag with fabric markers, stencils, stamps. They take it home. Perfect first event.",full:"Lay out blank canvas tote bags, fabric markers, foam stamps, stencils, newspaper (inside bags to prevent bleed). 45–60 minutes designing. Markers, stamps, stencils reusable. Main cost is bags (~£1 each). Great first event: low pressure, social, everyone leaves with something.",duration:"90 min",people:"10–20",cost:65,reusable:45,materials:[{n:"Plain canvas tote bags (15-pack)",c:"~£14",url:"https://www.amazon.co.uk/s?k=plain+canvas+tote+bag+natural+bulk+pack",reuse:false},{n:"Fabric paint markers (set of 20)",c:"~£14",url:"https://www.amazon.co.uk/s?k=fabric+paint+markers+pens+set+20",reuse:true},{n:"Foam stamp set (letters + shapes)",c:"~£12",url:"https://www.amazon.co.uk/s?k=foam+stamp+set+letters+shapes+craft",reuse:true},{n:"Stencil set (mixed designs)",c:"~£8",url:"https://www.amazon.co.uk/s?k=craft+stencil+set+mixed+designs",reuse:true},{n:"Newspaper (bleed prevention)",c:"Free",url:null,reuse:false}],prize:"Everyone keeps their bag. Optional: community vote for favourite design.",allergy:"Check for latex sensitivities. Non-toxic markers recommended.",tip:"Print 3–4 design inspiration sheets. Play music. Ideal first event — bags create organic visibility.",posterCat:"creative",posterCopy:{headline:"TOTE BAG WORKSHOP",sub:"Design your own bag — and keep it.",body:"Fabric markers, stencils, stamps, blank canvas bags.\n90 minutes to go wild. Your design, your bag.",free:"All materials provided — free to attend",prize:"You leave with the bag you designed",cta:"Sign up at reception or scan to RSVP"}}
+];
+
+const TEMPLATES=[
+  {id:1,icon:"🫧",cat:"competitive",subj:"Can you tell what you're drinking? 🫧 Blind Taste Test Night",body:"Hi everyone,\n\nWe're running a Blind Taste Test Night — you'll be blindfolded and challenged to identify unusual soft drinks. Think you know your Fentiman's from your Fever-Tree?\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\nTeams of 2–3. Points for every correct guess. Free soft drinks all evening. Prizes for the winning team.\n\nLimited spots — sign up at [RSVP LINK] or at reception.\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:2,icon:"🎨",cat:"creative",subj:"Can you copy a masterpiece? 🎨 Art Dupe Night",body:"Hi everyone,\n\nOn [DATE] we're hosting Art Dupe Night — you do not need to be artistic.\n\nThree paintings at different difficulty levels. Choose your tier, pick up your canvas and paints, and spend an hour copying it. Cross-bracket vote decides winners.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\nEverything provided: canvas, easel, paints, brushes. Just show up.\n\nRSVP at [RSVP LINK] — limited spaces.\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:3,icon:"🧠",cat:"competitive",subj:"5 rounds, 1 winner, 0 mercy 🧠 Quiz Night",body:"Hi everyone,\n\nQuiz Night — proper quiz night, with buzzers, scoreboard, and actual prizes.\n\nTeams of 3–4 across 5 rounds: Bristol knowledge, pop culture, science, music clips, wildcard picture round. Tiebreaker on the buzzers.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\nFree soft drinks. £20 for 1st, £10 for 2nd.\n\nRegister your team at [RSVP LINK] before [DEADLINE].\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:4,icon:"🌊",cat:"creative",subj:"Make something, keep something 🌊 Resin Art Night",body:"Hi everyone,\n\nResin Art Night on [DATE] — everyone who comes leaves with something they made.\n\nCreate your own resin coaster: pouring pigments, choosing colours. Beginner-friendly, guided. All materials provided. Collect next day.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\nSpaces limited — sign up at [RSVP LINK].\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:5,icon:"🎲",cat:"social",subj:"Brackets. Multiple games. One champion. 🎲 Board Game Gauntlet",body:"Hi everyone,\n\nBoard Game Gauntlet on [DATE] — bracket tournament across Catan, Ticket to Ride, Codenames, and Uno.\n\nDifferent games suit different people — everyone has a shot.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\n£20 voucher for the champion. Free soft drinks.\n\nSign up at [RSVP LINK].\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:6,icon:"🎤",cat:"social",subj:"The mic is open 🎤 Karaoke Night",body:"Hi everyone,\n\nKaraoke Night with prizes.\n\nTeams of 2–3, curated song list. Audience votes: Best Performance, Most Enthusiastic, Wildcard.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\nYou don't need to be a good singer. Free soft drinks.\n\nSign up at [RSVP LINK].\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:7,icon:"🌍",cat:"cultural",subj:"What does home taste like? 🌍 International Snacks Night",body:"Hi everyone,\n\nInternational Snacks Night on [DATE].\n\nBring a food or snack from your home country. We display everything with flags and ingredient labels. We provide soft drinks. Bring a receipt — reimbursed up to £8.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\nLet us know what you're bringing at [RSVP LINK].\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:8,icon:"🔍",cat:"competitive",subj:"Someone has been murdered 🔍 Murder Mystery Night",body:"Hi everyone,\n\nMurder Mystery Evening on [DATE]. You'll receive a character and clues before the event. On the night: question suspects, trade evidence, accuse.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 Cinema Room\n\nCharacter sheets sent day before. Dress up encouraged.\n\nLimited to 14 — sign up at [RSVP LINK].\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:9,icon:"📷",cat:"social",subj:"Walk. Shoot. Win. 📷 Bristol Photo Walk",body:"Hi everyone,\n\nGroup walk around Bristol with a photography mission.\n\nTheme: [PHOTO THEME]. Use your phone. Submit best 2–3 photos. Community votes for the winner.\n\n📅 Walk date: [DATE]\n🕖 Meet at: [MEETING POINT] at [TIME]\n\n£15–20 voucher for the winner. Free, outdoors.\n\nRSVP at [RSVP LINK].\n\nSee you there,\n[YOUR NAME]\nEvents Team"},
+  {id:10,icon:"🎒",cat:"creative",subj:"Design your own tote bag 🎒 Craft Workshop",body:"Hi everyone,\n\nTote Bag Workshop on [DATE] — leave with a bag you designed.\n\nFabric markers, stencils, stamps, blank canvas bags provided. 90 minutes. Your design.\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 [VENUE]\n\nNo skill required.\n\nSign up at [RSVP LINK].\n\nSee you there,\n[YOUR NAME]\nEvents Team"}
+];
+
+const PREP_STEPS=[
+  {days:21,label:"Start planning",desc:"Brief the committee. Confirm event idea, format, headcount target, budget.",tag:"plan"},
+  {days:14,label:"Get approval + check storage",desc:"Submit for manager approval. Check storage room for reusable materials before Amazon orders.",tag:"approval"},
+  {days:12,label:"Order materials on Amazon",desc:"Place all orders. Use the materials list. Prioritise reusable items.",tag:"order"},
+  {days:9,label:"Confirm deliveries",desc:"Chase outstanding orders. Verify everything arrived. Check quality.",tag:"order"},
+  {days:7,label:"Send invite email",desc:"Send event email template to all residents. Date, time, venue, free item, prizes in first two lines.",tag:"comms"},
+  {days:5,label:"Put up posters",desc:"Print and display posters in lifts, common room, main entrance. Add QR code to RSVP form.",tag:"comms"},
+  {days:3,label:"Send reminder",desc:"Short reminder. Mention 'only X spots left' if applicable.",tag:"comms"},
+  {days:1,label:"Final setup",desc:"Set up room. Lay out materials. Test tech. Brief helpers.",tag:"approval"},
+  {days:0,label:"🎉 Event day",desc:"Take photos throughout — you'll need them for the noticeboard and marketing. Have fun.",tag:"event"},
+  {days:-1,label:"Post-event follow-up",desc:"Pin photos on noticeboard. Send thank-you email. Log turnout and notes.",tag:"followup"}
+];
+
+const CANVA_URLS={competitive:"https://www.canva.com/templates/?query=quiz+night+event+poster",creative:"https://www.canva.com/templates/?query=art+workshop+creative+poster",social:"https://www.canva.com/templates/?query=community+social+event+poster",cultural:"https://www.canva.com/templates/?query=cultural+food+night+event+poster"};
+const STATUS_LABELS={none:"Not planned",scheduled:"Scheduled",done:"Done ✓"};
+const STATUS_CYCLE={none:"scheduled",scheduled:"done",done:"none"};
+const POSTER_TEMPLATES={competitive:{bg:"p-dark",badge:"Competitive"},creative:{bg:"p-coral",badge:"Creative"},social:{bg:"p-forest",badge:"Social"},cultural:{bg:"p-forest",badge:"Cultural"}};
+
+/* ── DYNAMIC STORES ── */
+let selectedBudget = new Set(lsGet("ubs_budget",[]));
+let statuses = lsGet("ubs_statuses",{});
+let customEvents = lsGet("ubs_custom_events",[]);
+let hiddenIds = new Set(lsGet("ubs_hidden_ids",[]));
+let customTemplates = lsGet("ubs_custom_templates",[]);
+let inventoryItems = lsGet("ubs_inventory",[]);
+let eventLog = lsGet("ubs_event_log",[]);
+let customLinks = lsGet("ubs_custom_links",{});
+let completionRating = 0;
+
+/* ── SEASONS ── */
+let seasons = lsGet("ubs_seasons",[
+  {id:"spring",name:"Spring",color:"teal",title:"Fresh Start",start:"2026-03-27",end:"2026-05-15",events:["🌍 International Snacks Night","🎒 Tote Bag Workshop"],target:"1–2 events",note:"Low-barrier, social events as students settle in or return from Easter."},
+  {id:"summer_early",name:"Early Summer",color:"amber",title:"Exam & Wind-down",start:"2026-05-15",end:"2026-06-20",events:["📷 Bristol Photo Walk","🎲 Board Game Gauntlet"],target:"1–2 events (optional)",note:"Keep it light. One low-key event mid-exam period gives a healthy break."},
+  {id:"summer_late",name:"Late Summer",color:"coral",title:"Golden Window 🌟",start:"2026-06-20",end:"2026-08-15",events:["🧠 Quiz Night · 🎤 Karaoke","🎨 Art Dupe · 🌊 Resin Night","🫧 Taste Test · 🔍 Murder Mystery"],target:"Weekly (up to 8 events)",note:"Go all out. Students are relaxed, social. Mix competitive, creative, and social events."},
+  {id:"autumn",name:"Autumn",color:"purple",title:"Welcome Season",start:"2026-09-01",end:"2026-12-15",events:["New intake events","Halloween special","Christmas party"],target:"2–3 events/month",note:"Perfect for welcoming new students. High engagement window."}
+]);
+
+function catBg(c){return{competitive:"var(--amber-lt)",creative:"var(--coral-lt)",social:"var(--teal-lt)",cultural:"var(--purple-lt)"}[c]}
+function catLabel(c){return{competitive:"Competitive",creative:"Creative",social:"Social",cultural:"Cultural"}[c]}
+function fmtDate(d){return d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"})}
+function getActiveEvents(){return[...EVENTS,...customEvents].filter(e=>!hiddenIds.has(e.id))}
+function getAllTemplates(){return[...TEMPLATES,...customTemplates]}
+function saveCustomStore(){lsSet("ubs_custom_events",customEvents);lsSet("ubs_hidden_ids",[...hiddenIds]);lsSet("ubs_custom_templates",customTemplates)}
+
+/* ── STATUS CYCLE (with completion prompt) ── */
+function cycleStatus(id,ev){
+  ev.stopPropagation();
+  const cur=statuses[id]||"none";
+  const next=STATUS_CYCLE[cur];
+  statuses[id]=next;
+  lsSet("ubs_statuses",statuses);
+  const btn=document.getElementById("sbadge-"+id);
+  if(btn){btn.className="status-badge "+next;btn.textContent=STATUS_LABELS[next]}
+  if(next==="done") openCompletion(id);
+  updateStats();
+}
+
+/* ── COMPLETION LOG ── */
+function openCompletion(id){
+  const e=getActiveEvents().find(x=>String(x.id)===String(id));
+  if(!e)return;
+  document.getElementById("comp-event-id").value=id;
+  document.getElementById("comp-name").value=e.name;
+  document.getElementById("comp-date").value=new Date().toISOString().split("T")[0];
+  document.getElementById("comp-attendance").value="";
+  document.getElementById("comp-notes").value="";
+  completionRating=0;
+  renderStars();
+  document.getElementById("completion-overlay").classList.add("open");
+}
+function renderStars(){
+  const wrap=document.getElementById("comp-stars");
+  wrap.innerHTML=[1,2,3,4,5].map(i=>`<span class="star${i<=completionRating?" active":""}" onclick="completionRating=${i};renderStars()">★</span>`).join("");
+}
+function saveCompletion(){
+  const id=document.getElementById("comp-event-id").value;
+  const entry={id,name:document.getElementById("comp-name").value,date:document.getElementById("comp-date").value,attendance:parseInt(document.getElementById("comp-attendance").value)||0,rating:completionRating,notes:document.getElementById("comp-notes").value.trim()};
+  eventLog.push(entry);
+  lsSet("ubs_event_log",eventLog);
+  closeCompletion();
+  renderEventLog();
+  updateStats();
+}
+function closeCompletion(){document.getElementById("completion-overlay").classList.remove("open")}
+function renderEventLog(){
+  const wrap=document.getElementById("event-log-wrap");
+  if(!eventLog.length){wrap.innerHTML='<div style="font-size:.84rem;color:var(--muted);text-align:center;padding:1.5rem;background:var(--page);border-radius:10px">No events logged yet.</div>';return}
+  wrap.innerHTML='<div class="evt-log">'+eventLog.slice().reverse().map(e=>{
+    const stars="★".repeat(e.rating)+"☆".repeat(5-e.rating);
+    return`<div class="evt-log-entry"><div class="evt-log-date">${e.date} · ${e.name} · ${stars} · ${e.attendance} people</div><div class="evt-log-text">${e.notes||"No notes"}</div></div>`
+  }).join("")+'</div>';
+}
+
+/* ── BUDGET ── */
+function toggleBudget(id){
+  if(selectedBudget.has(id))selectedBudget.delete(id);else selectedBudget.add(id);
+  document.getElementById("bev-"+id).className="bev"+(selectedBudget.has(id)?" on":"");
+  lsSet("ubs_budget",[...selectedBudget]);
+  updateBudget();
+}
+function updateBudget(){
+  const BT=getBudgetTotal();
+  let spent=0,reusable=0,count=0;
+  const allEvts=[...EVENTS,...customEvents];
+  selectedBudget.forEach(id=>{const e=allEvts.find(x=>String(x.id)===String(id));if(e){spent+=e.cost;count++;reusable+=e.reusable}});
+  const pct=Math.min(100,Math.round(spent/BT*100));
+  const remain=BT-spent;
+  const bar=document.getElementById("budget-bar");
+  bar.style.width=pct+"%";
+  bar.className="budget-fill"+(spent>BT?" over":"");
+  document.getElementById("budget-pct").textContent=pct+"% of budget used";
+  document.getElementById("spent-display").textContent=spent;
+  document.getElementById("remaining-display").textContent=Math.max(0,remain);
+  document.getElementById("monthly-display").textContent=budgetSettings.monthly;
+  document.getElementById("budget-total-display").textContent=BT;
+  document.getElementById("bs-events").textContent=count;
+  document.getElementById("bs-spent").textContent="£"+spent;
+  const rv=document.getElementById("bs-remain");rv.textContent="£"+remain;rv.className="bs-val"+(remain<0?" red":"");
+  document.getElementById("bs-reusable").textContent="£"+reusable;
+  // Event capacity
+  const active=getActiveEvents();
+  const avgCost=active.length?Math.round(active.reduce((s,e)=>s+e.cost,0)/active.length):0;
+  const capacity=avgCost>0?Math.floor(Math.max(0,remain)/avgCost):0;
+  document.getElementById("bs-capacity").textContent="~"+capacity+" more events";
+  document.getElementById("stat-total-budget").textContent="£"+BT;
+  document.getElementById("stat-capacity").textContent="~"+capacity;
+}
+
+function updateStats(){
+  const doneEvents=eventLog.length;
+  const totalSpent=eventLog.reduce((s,e)=>{const ev=getActiveEvents().find(x=>String(x.id)===String(e.id));return s+(ev?ev.cost:0)},0);
+  const avgCost=doneEvents?Math.round(totalSpent/doneEvents):0;
+  const avgAtt=doneEvents?Math.round(eventLog.reduce((s,e)=>s+e.attendance,0)/doneEvents):0;
+  document.getElementById("stat-events-run").textContent=doneEvents;
+  document.getElementById("stat-avg-cost").textContent="£"+avgCost;
+  document.getElementById("stat-avg-attendance").textContent=doneEvents?avgAtt:"—";
+}
+
+/* ── RENDER FUNCTIONS ── */
+function renderEventsGrid(){
+  const g=document.getElementById("events-grid");
+  const active=getActiveEvents();
+  g.innerHTML=active.map(e=>{
+    const st=statuses[e.id]||"none";
+    const isCustom=customEvents.find(c=>c.id===e.id);
+    return`<div class="event-card ${e.cat}" onclick="openModal(${JSON.stringify(e.id)})"><div class="ec-top"><div class="ec-icon">${e.icon}</div><div class="ec-top-right"><span class="ec-badge">${catLabel(e.cat)}${isCustom?'<span class="custom-tag">custom</span>':''}</span><button class="status-badge ${st}" id="sbadge-${e.id}" onclick="cycleStatus(${JSON.stringify(e.id)},event)">${STATUS_LABELS[st]}</button></div></div><div class="ec-name">${e.name} <button class="ec-edit-btn" onclick="openEditEvent(${JSON.stringify(e.id)},event)" title="Edit">✏</button></div><div class="ec-desc">${e.short}</div><div class="ec-meta"><div class="ec-meta-item">⏱ ${e.duration}</div><div class="ec-meta-item">👥 ${e.people}</div><div class="ec-meta-item" style="font-weight:600;color:var(--ink)">£${e.cost}</div></div><div class="ec-footer"><div class="ec-venue">📍 ${e.venue}</div><button class="btn-detail" onclick="openModal(${JSON.stringify(e.id)});event.stopPropagation()">View details →</button></div></div>`
+  }).join("");
+}
+
+function renderBudgetList(){
+  const el=document.getElementById("budget-events-list");
+  el.innerHTML=getActiveEvents().map(e=>`<div class="bev${selectedBudget.has(e.id)?" on":""}" id="bev-${e.id}" onclick="toggleBudget(${JSON.stringify(e.id)})"><span class="bev-name">${e.icon} ${e.name}</span><span class="bev-cost">£${e.cost}</span></div>`).join("");
+  updateBudget();
+}
+
+function renderTemplates(){
+  const g=document.getElementById("tpl-grid");
+  const all=getAllTemplates();
+  g.innerHTML=all.map((t,i)=>{
+    const ev=getActiveEvents().find(e=>e.id===t.id);
+    if(!ev)return"";
+    return`<div class="tpl-card"><div class="tpl-hd" onclick="toggleTpl(${i})"><div class="tpl-hd-left"><div class="tpl-icon" style="background:${catBg(ev.cat)}">${ev.icon}</div><div><div class="tpl-evt-name">${ev.name}</div><div class="tpl-subj">Subject: ${t.subj}</div></div></div><div class="tpl-actions"><span class="tpl-toggle" id="ttgl-${i}">Show ↓</span><button class="btn-copy" id="tcopy-${i}" onclick="copyTpl(${i},event)">Copy email</button></div></div><div class="tpl-body" id="tplbody-${i}"><div class="subj-line"><strong>Subject:</strong> ${t.subj}</div>${t.body}</div></div>`
+  }).join("");
+}
+
+function repopulatePlannerDropdown(){
+  const sel=document.getElementById("planner-event");const cur=sel.value;
+  sel.innerHTML='<option value="">— choose an event —</option>';
+  getActiveEvents().forEach(e=>{const o=document.createElement("option");o.value=e.id;o.textContent=e.icon+" "+e.name;if(String(e.id)===String(cur))o.selected=true;sel.appendChild(o)});
+}
+function repopulatePosterDropdown(){
+  const sel=document.getElementById("poster-event-sel");const cur=sel.value;
+  sel.innerHTML='<option value="">— choose an event —</option>';
+  getActiveEvents().forEach(e=>{const o=document.createElement("option");o.value=e.id;o.textContent=e.icon+" "+e.name;if(String(e.id)===String(cur))o.selected=true;sel.appendChild(o)});
+}
+
+/* ── ROADMAP / SEASONS ── */
+function renderRoadmap(){
+  const tl=document.getElementById("roadmap-timeline");
+  const cards=document.getElementById("season-cards");
+  const allStart=new Date(seasons[0].start);
+  const allEnd=new Date(seasons[seasons.length-1].end);
+  const totalDays=(allEnd-allStart)/(86400000);
+  const today=new Date();
+  const todayPct=Math.max(0,Math.min(100,((today-allStart)/(allEnd-allStart))*100));
+  const colors={teal:"var(--teal)",amber:"var(--amber)",coral:"var(--coral)",purple:"var(--purple)"};
+  const barSegments=seasons.map(s=>{const sStart=new Date(s.start);const sEnd=new Date(s.end);const w=((sEnd-sStart)/(allEnd-allStart))*100;return`<div style="background:${colors[s.color]};height:100%;width:${w}%"></div>`}).join("");
+  const labels=seasons.map(s=>{const sStart=new Date(s.start);const sEnd=new Date(s.end);const w=((sEnd-sStart)/(allEnd-allStart))*100;return`<div class="tl-lbl" style="width:${w}%">${new Date(s.end).toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</div>`}).join("");
+  const legend=seasons.map(s=>`<div class="tl-leg-item"><div class="tl-leg-dot" style="background:${colors[s.color]}"></div>${s.name}</div>`).join("");
+  tl.innerHTML=`<div class="tl-legend">${legend}</div><div style="position:relative"><div class="tl-today-wrap" style="left:${todayPct}%"><div class="tl-today-label">Today · ${fmtDate(today)}</div><div class="tl-today-dot"></div></div><div class="tl-bar">${barSegments}</div></div><div class="tl-labels" style="margin-top:.4rem">${labels}</div>`;
+  const pcClasses=["pc1","pc2","pc3","pc4"];
+  cards.innerHTML=seasons.map((s,i)=>`<div class="phase-card ${pcClasses[i]||'pc1'}"><div class="pc-badge">${s.name}</div><div class="pc-title">${s.title}</div><div class="pc-dates"><input type="date" value="${s.start}" onchange="updateSeasonDate(${i},'start',this.value)"> → <input type="date" value="${s.end}" onchange="updateSeasonDate(${i},'end',this.value)"></div><ul class="pc-events">${s.events.map(e=>`<li class="pc-ev">${e}</li>`).join("")}</ul><div class="pc-freq">🎯 Target: ${s.target}</div><div class="pc-note">${s.note}</div></div>`).join("");
+}
+function updateSeasonDate(i,which,val){
+  seasons[i][which]=val;
+  lsSet("ubs_seasons",seasons);
+  renderRoadmap();
+}
+
+/* ── MODAL ── */
+function openModal(id){
+  const e=getActiveEvents().find(x=>String(x.id)===String(id));if(!e)return;
+  document.getElementById("modal-icon").style.background=catBg(e.cat);
+  document.getElementById("modal-icon").textContent=e.icon;
+  document.getElementById("modal-title").textContent=e.name;
+  document.getElementById("modal-subtitle").textContent=catLabel(e.cat)+" · "+e.duration+" · "+e.people+" people · Est. £"+e.cost+" · "+e.venue;
+  const links=customLinks[id]||{};
+  const mats=e.materials.map((m,mi)=>{
+    const url=links[mi]||m.url;
+    return`<li class="mat-item"><span class="mat-name">${m.n}</span><span class="mat-cost">${m.c}</span>${m.reuse?'<span class="mat-reuse">Reusable</span>':''}${url?`<a href="${url}" target="_blank" class="mat-link">Amazon ↗</a><button class="mat-link-edit" onclick="editMatLink(${JSON.stringify(id)},${mi})" title="Edit link">✏</button>`:''}</li>`
+  }).join("");
+  const savedNotes=lsGet("ubs_notes_"+id,"");
+  document.getElementById("modal-body").innerHTML=`
+    <div class="ms"><div class="ms-title">About this event</div><p class="desc-text">${e.full}</p></div>
+    <div class="ms"><div class="ms-title">Quick info</div><div class="info-row"><div class="info-pill"><strong>Duration</strong>${e.duration}</div><div class="info-pill"><strong>Participants</strong>${e.people}</div><div class="info-pill"><strong>Est. cost</strong>£${e.cost}</div><div class="info-pill"><strong>Reusable value</strong>£${e.reusable}</div><div class="info-pill"><strong>Venue</strong>${e.venue}</div></div></div>
+    <div class="ms"><div class="ms-title">Materials &amp; Amazon Links</div><div class="storage-banner">⚠ Check the storage room before ordering</div><ul class="mat-list">${mats}</ul><div class="cost-block"><div><div style="font-size:.72rem;opacity:.45;margin-bottom:.2rem">Estimated total</div><div class="cost-num">£${e.cost}</div></div><div class="cost-note">£${e.reusable} in reusable assets — repeat events cost less.</div></div></div>
+    <div class="ms"><div class="ms-title">Prizes</div><p class="desc-text">${e.prize}</p></div>
+    <div class="ms"><div class="ms-title">Allergen &amp; Inclusion Notes</div><p class="desc-text">${e.allergy}</p></div>
+    <div class="ms"><div class="ms-title">Tips for Running This Event</div><div class="tip-box">${e.tip}</div></div>
+    <div class="notes-section"><div class="notes-hd"><div class="notes-title">Post-event notes (saves automatically)</div><span class="notes-status" id="notes-saved-msg">Saved ✓</span></div><textarea class="notes-textarea" id="notes-area-${id}" placeholder="Log turnout, what worked, suggestions...">${savedNotes}</textarea><button class="btn-save" onclick="saveNotes(${JSON.stringify(id)})">Save notes</button></div>`;
+  document.getElementById("modal-overlay").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+
+function editMatLink(eventId,matIdx){
+  const cur=customLinks[eventId]?.[matIdx]||"";
+  const newUrl=prompt("Enter new Amazon URL for this material:",cur);
+  if(newUrl===null)return;
+  if(!customLinks[eventId])customLinks[eventId]={};
+  customLinks[eventId][matIdx]=newUrl;
+  lsSet("ubs_custom_links",customLinks);
+  openModal(eventId);
+}
+
+function saveNotes(id){lsSet("ubs_notes_"+id,document.getElementById("notes-area-"+id).value);const msg=document.getElementById("notes-saved-msg");msg.classList.add("show");setTimeout(()=>msg.classList.remove("show"),2000)}
+function closeModal(){document.getElementById("modal-overlay").classList.remove("open");document.body.style.overflow=""}
+function closeModalOuter(e){if(e.target===document.getElementById("modal-overlay"))closeModal()}
+
+/* ── SCHEDULE ── */
+function generateSchedule(){
+  const evId=document.getElementById("planner-event").value;
+  const dateVal=document.getElementById("planner-date").value;
+  if(!evId||!dateVal){alert("Please select an event and a date.");return}
+  const ev=getActiveEvents().find(x=>String(x.id)===String(evId));
+  const eventDate=new Date(dateVal+"T12:00:00");
+  const today=new Date();today.setHours(0,0,0,0);
+  const schedKey="ubs_sched_"+evId+"_"+dateVal;
+  let savedChecks=lsGet(schedKey,[]);
+  document.getElementById("sched-title").textContent=ev.icon+" "+ev.name+" — Prep Schedule";
+  document.getElementById("sched-sub").textContent="Event on "+fmtDate(eventDate)+" · "+ev.venue+" · Est. £"+ev.cost;
+  const stepsHtml=PREP_STEPS.map((step,i)=>{
+    const stepDate=new Date(eventDate);stepDate.setDate(stepDate.getDate()-step.days);stepDate.setHours(0,0,0,0);
+    const isPast=stepDate<today;const isToday=stepDate.getTime()===today.getTime();const isEvent=step.days===0;const isChecked=savedChecks[i]||false;
+    let cls="sched-step";if(isChecked)cls+=" done";if(isEvent)cls+=" is-event";else if(isPast&&!isChecked)cls+=" is-past";
+    const tagCls={plan:"tag-plan",approval:"tag-approval",order:"tag-order",comms:"tag-comms",event:"tag-event",followup:"tag-followup"}[step.tag]||"tag-plan";
+    return`<div class="${cls}" id="sched-step-${i}"><input type="checkbox" class="sched-check" ${isChecked?"checked":""} onchange="toggleSchedStep('${schedKey}',${i},this.checked)"><div class="sched-date${isEvent?" event-day":""}">${fmtDate(stepDate)}${isToday?" ← today":""}</div><div class="sched-content"><div class="sched-label">${step.label}</div><div class="sched-desc">${step.desc}</div></div><div class="sched-tag ${tagCls}">${step.tag}</div></div>`
+  }).join("");
+  document.getElementById("sched-steps").innerHTML=stepsHtml;
+  document.getElementById("sched-container").classList.add("vis");
+  document.getElementById("sched-container").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function toggleSchedStep(key,idx,checked){let arr=lsGet(key,[]);arr[idx]=checked;lsSet(key,arr);const step=document.getElementById("sched-step-"+idx);if(checked)step.classList.add("done");else step.classList.remove("done")}
+
+/* ── TEMPLATES ── */
+function toggleTpl(i){const b=document.getElementById("tplbody-"+i);const l=document.getElementById("ttgl-"+i);const open=b.classList.toggle("open");l.textContent=open?"Hide ↑":"Show ↓"}
+function copyTpl(i,ev){ev.stopPropagation();const t=getAllTemplates()[i];if(!t)return;navigator.clipboard.writeText("Subject: "+t.subj+"\n\n"+t.body).then(()=>{const b=document.getElementById("tcopy-"+i);b.textContent="Copied ✓";b.classList.add("copied");setTimeout(()=>{b.textContent="Copy email";b.classList.remove("copied")},2000)})}
+
+/* ── POSTERS + CANVA AI PROMPT ── */
+function generatePosterCopy(){
+  const selId=document.getElementById("poster-event-sel").value;
+  if(!selId){document.getElementById("poster-output").classList.remove("vis");return}
+  const ev=getActiveEvents().find(e=>String(e.id)===String(selId));
+  const pc=ev.posterCopy;const pt=POSTER_TEMPLATES[ev.posterCat]||POSTER_TEMPLATES.competitive;
+  document.getElementById("poster-preview-render").innerHTML=`<div class="poster ${pt.bg}" style="min-height:300px"><div class="p-blob" style="width:120px;height:120px;background:rgba(255,255,255,.08);top:-30px;right:-30px;border-radius:50%"></div><div><div class="p-eyebrow">Unite Students · Free Entry</div><div class="p-badge">${pt.badge}</div><div class="p-title" style="font-size:1.5rem">${pc.headline.replace(/\n/,"<br>")}</div><div class="p-line"></div><div class="p-detail">${pc.body.split("\n").slice(0,2).join("<br>")}</div></div><div><div class="p-cta">${pc.cta.substring(0,40)}</div><div class="p-footer"><span>[DATE] · [TIME]</span><div class="p-qr">QR<br>CODE</div></div></div></div>`;
+  const copyText=`━━━ HEADLINE ━━━\n${pc.headline}\n\n━━━ SUBHEADING ━━━\n${pc.sub}\n\n━━━ BODY TEXT ━━━\n${pc.body}\n\n━━━ DATE & VENUE ━━━\n📅 [DATE]\n🕐 [TIME]\n📍 ${ev.venue}\n\n━━━ OFFER & PRIZES ━━━\n✓ ${pc.free}\n🏆 ${pc.prize}\n\n━━━ CALL TO ACTION ━━━\n${pc.cta}\n\n━━━ FOOTER ━━━\nFree entry — all residents welcome`;
+  document.getElementById("poster-copy-text").value=copyText;
+  document.getElementById("btn-canva-link").href=CANVA_URLS[ev.posterCat]||CANVA_URLS.competitive;
+  // Canva AI prompt
+  const catColors={competitive:"dark navy (#0D1B35) with amber/gold accents",creative:"vibrant coral/red (#D94F34) with white text",social:"deep forest green (#0D3528) with teal accents",cultural:"deep forest green (#0D3528) with warm gold accents"};
+  const canvaPrompt=`Create a modern, bold A3 event poster for a student accommodation event.\n\nEvent: ${ev.name}\nCategory: ${catLabel(ev.cat)}\nColour scheme: ${catColors[ev.posterCat]||catColors.competitive}\nHeadline: "${pc.headline}"\nSubheading: "${pc.sub}"\n\nBody text:\n${pc.body}\n\nKey details to include:\n- Date: [DATE] and Time: [TIME]\n- Venue: ${ev.venue}\n- ${pc.free}\n- ${pc.prize}\n- Call to action: "${pc.cta}"\n- Leave space for a QR code in the bottom-right corner\n- Include "Unite Students" branding at the top\n\nStyle: Clean, contemporary, slightly editorial. Large bold headline with generous whitespace. Sans-serif typography. Subtle geometric shapes or abstract blobs as background decoration. The poster should feel premium but approachable — student-friendly, not corporate. The overall vibe should be energetic for competitive events, creative/artsy for creative events, warm/welcoming for social events.`;
+  document.getElementById("canva-prompt-box").textContent=canvaPrompt;
+  document.getElementById("poster-output").classList.add("vis");
+}
+function copyPosterText(){const txt=document.getElementById("poster-copy-text").value;navigator.clipboard.writeText(txt).then(()=>{const b=document.getElementById("btn-cp-poster");b.textContent="Copied ✓";b.classList.add("copied");setTimeout(()=>{b.textContent="Copy text";b.classList.remove("copied")},2000)})}
+function copyCanvaPrompt(){const txt=document.getElementById("canva-prompt-box").textContent;navigator.clipboard.writeText(txt).then(()=>{alert("Canva AI prompt copied!")})}
+
+/* ── INVENTORY ── */
+function renderInventory(){
+  const wrap=document.getElementById("inv-table-wrap");
+  if(!inventoryItems.length){wrap.innerHTML='<div style="font-size:.84rem;color:var(--muted);text-align:center;padding:1rem">No items yet. Add your building\'s stock below.</div>';return}
+  wrap.innerHTML=`<table class="inv-table"><thead><tr><th>Item</th><th>Qty</th><th>Notes</th><th></th></tr></thead><tbody>${inventoryItems.map((item,i)=>`<tr><td>${item.name}</td><td>${item.qty}</td><td style="color:var(--muted)">${item.notes||"—"}</td><td><button class="inv-rm" onclick="removeInventoryItem(${i})">✕</button></td></tr>`).join("")}</tbody></table>`;
+}
+function addInventoryItem(){
+  const name=document.getElementById("inv-name").value.trim();
+  const qty=parseInt(document.getElementById("inv-qty").value)||0;
+  const notes=document.getElementById("inv-notes-input").value.trim();
+  if(!name)return;
+  inventoryItems.push({name,qty,notes});
+  lsSet("ubs_inventory",inventoryItems);
+  document.getElementById("inv-name").value="";document.getElementById("inv-qty").value="";document.getElementById("inv-notes-input").value="";
+  renderInventory();
+}
+function removeInventoryItem(i){inventoryItems.splice(i,1);lsSet("ubs_inventory",inventoryItems);renderInventory()}
+
+/* ── FEEDBACK ── */
+function openFeedback(){
+  const bName=profile?profile.building:"";
+  document.getElementById("fb-building").value=bName;
+  document.getElementById("fb-form-content").innerHTML!=="done"&&(document.getElementById("feedback-overlay").classList.add("open"));
+  document.getElementById("feedback-overlay").classList.add("open");
+}
+function closeFeedback(){document.getElementById("feedback-overlay").classList.remove("open")}
+function submitFeedback(){
+  const name=document.getElementById("fb-name").value.trim();
+  const msg=document.getElementById("fb-message").value.trim();
+  if(!msg){alert("Please enter a message.");return}
+  // Store locally + show success (Formspree endpoint can be added later)
+  const feedback=lsGet("ubs_feedback_log",[]);
+  feedback.push({name,building:document.getElementById("fb-building").value,type:document.getElementById("fb-type").value,message:msg,date:new Date().toISOString()});
+  lsSet("ubs_feedback_log",feedback);
+  document.getElementById("fb-form-content").innerHTML='<div class="fb-success">✓ Feedback sent! Thank you — this really helps improve the planner for everyone.</div><div style="text-align:center;margin-top:.75rem"><button style="background:var(--page);color:var(--ink);border:1px solid var(--border);padding:.4rem 1rem;border-radius:7px;cursor:pointer;font-family:inherit" onclick="closeFeedback();resetFeedbackForm()">Close</button></div>';
+}
+function resetFeedbackForm(){
+  document.getElementById("fb-form-content").innerHTML=`<div class="fb-field"><label>Your name</label><input type="text" id="fb-name" placeholder="Your name"></div><div class="fb-field"><label>Building</label><input type="text" id="fb-building" placeholder="Your building name"></div><div class="fb-field"><label>Type</label><select id="fb-type"><option>Suggestion</option><option>Bug report</option><option>Feature request</option><option>General feedback</option></select></div><div class="fb-field"><label>Message</label><textarea id="fb-message" placeholder="What's on your mind?"></textarea></div><div class="fb-btns"><button style="background:var(--coral);color:white" onclick="submitFeedback()">Send feedback</button><button style="background:var(--page);color:var(--ink);border:1px solid var(--border)" onclick="closeFeedback()">Cancel</button></div><div style="font-size:.72rem;color:var(--muted);margin-top:.75rem">Feedback goes to francesco.sorriento@unitestudents.com</div>`;
+}
+
+/* ── EVENT MANAGER ── */
+let mgrMode="create";
+function openManager(tab){mgrMode=tab;switchMgrTab(tab==="restore"?"restore":"create");if(tab==="create")resetMgrForm();document.getElementById("mgr-overlay").classList.add("open");document.body.style.overflow="hidden"}
+function closeMgr(){document.getElementById("mgr-overlay").classList.remove("open");document.body.style.overflow=""}
+function closeMgrOuter(e){if(e.target===document.getElementById("mgr-overlay"))closeMgr()}
+function switchMgrTab(tab){document.querySelectorAll(".mgr-tab").forEach(t=>t.classList.remove("active"));document.querySelectorAll(".mgr-pane").forEach(p=>p.classList.remove("active"));document.getElementById("tab-"+tab).classList.add("active");document.getElementById("pane-"+tab).classList.add("active");if(tab==="restore")renderRestoreList()}
+function resetMgrForm(){document.getElementById("mgr-edit-id").value="";document.getElementById("mgr-title").textContent="Create New Event";document.getElementById("mgr-delete-btn").style.display="none";["mgr-name","mgr-duration","mgr-people","mgr-cost","mgr-reusable","mgr-short","mgr-full","mgr-prize","mgr-allergy","mgr-tips","mgr-email-subj","mgr-email-body"].forEach(id=>document.getElementById(id).value="");document.getElementById("mgr-cat").value="competitive";document.getElementById("mgr-venue").selectedIndex=0;document.getElementById("mgr-email-preview").textContent="Fill in the event details above to generate a draft...";resetIconPicker("🎯");renderMatRows([])}
+function openEditEvent(id,ev){
+  if(ev)ev.stopPropagation();
+  const e=getActiveEvents().find(x=>x.id===id);if(!e)return;
+  openManager("create");
+  document.getElementById("mgr-edit-id").value=id;document.getElementById("mgr-title").textContent="Edit Event";document.getElementById("mgr-delete-btn").style.display="inline-flex";
+  document.getElementById("mgr-name").value=e.name;document.getElementById("mgr-cat").value=e.cat;
+  const venueOpts=[...document.getElementById("mgr-venue").options];const match=venueOpts.find(o=>o.value===e.venue);if(match)document.getElementById("mgr-venue").value=e.venue;
+  document.getElementById("mgr-duration").value=e.duration||"";document.getElementById("mgr-people").value=e.people||"";document.getElementById("mgr-cost").value=e.cost||"";document.getElementById("mgr-reusable").value=e.reusable||"";document.getElementById("mgr-short").value=e.short||"";document.getElementById("mgr-full").value=e.full||"";document.getElementById("mgr-prize").value=e.prize||"";document.getElementById("mgr-allergy").value=e.allergy||"";document.getElementById("mgr-tips").value=e.tip||"";
+  resetIconPicker(e.icon||"🎯");renderMatRows(e.materials||[]);
+  const tpl=getAllTemplates().find(t=>t.id===id);
+  if(tpl){document.getElementById("mgr-email-subj").value=tpl.subj||"";document.getElementById("mgr-email-body").value=tpl.body||""}
+  mgrAutoEmail();
+}
+function pickIcon(el){document.querySelectorAll(".icon-opt").forEach(o=>o.classList.remove("selected"));el.classList.add("selected")}
+function resetIconPicker(icon){const opts=document.querySelectorAll(".icon-opt");let found=false;opts.forEach(o=>{o.classList.remove("selected");if(o.dataset.icon===icon){o.classList.add("selected");found=true}});if(!found&&opts.length)opts[0].classList.add("selected")}
+function getSelectedIcon(){const sel=document.querySelector(".icon-opt.selected");return sel?sel.dataset.icon:"🎯"}
+function renderMatRows(mats){const wrap=document.getElementById("mgr-mat-rows");wrap.innerHTML="";(mats.length?mats:[]).forEach(m=>addMatRow(m));if(!mats.length)addMatRow()}
+function addMatRow(data){
+  const wrap=document.getElementById("mgr-mat-rows");const row=document.createElement("div");row.className="mat-row";
+  row.innerHTML=`<input placeholder="Material name" value="${data&&data.n?data.n.replace(/"/g,'&quot;'):''}" class="mat-name-in"><input placeholder="~£0" value="${data&&data.c?data.c:''}" class="mat-cost-in"><input placeholder="Amazon URL" value="${data&&data.url?data.url:''}" class="mat-url-in"><label class="mat-row-reuse"><input type="checkbox" class="mat-reuse-in" ${data&&data.reuse?'checked':''}> Reusable</label><button class="btn-rm-mat" onclick="this.parentElement.remove()" title="Remove">✕</button>`;
+  wrap.appendChild(row);
+}
+function getMaterials(){const rows=document.querySelectorAll("#mgr-mat-rows .mat-row");const mats=[];rows.forEach(r=>{const n=r.querySelector(".mat-name-in").value.trim();const c=r.querySelector(".mat-cost-in").value.trim();const url=r.querySelector(".mat-url-in")?r.querySelector(".mat-url-in").value.trim():"";const reuse=r.querySelector(".mat-reuse-in").checked;if(n)mats.push({n,c:c||"TBC",url:url||null,reuse})});return mats}
+function mgrAutoEmail(){
+  const name=document.getElementById("mgr-name").value.trim()||"[Event Name]";
+  const short=document.getElementById("mgr-short").value.trim()||"[brief description]";
+  const prize=document.getElementById("mgr-prize").value.trim()||"[prize details]";
+  const venue=document.getElementById("mgr-venue").value;
+  const generated=`Hi everyone,\n\nWe're running ${name} — ${short}\n\n📅 Date: [DATE]\n🕖 Time: [TIME]\n📍 ${venue}\n\nFree entry — no experience needed. Just show up.\n\nPrizes: ${prize}\n\nSign up at [RSVP LINK] or at reception. Spaces are limited.\n\nSee you there,\n[YOUR NAME]\nEvents Team`;
+  document.getElementById("mgr-email-preview").textContent=generated;
+  if(!document.getElementById("mgr-email-subj").value)document.getElementById("mgr-email-subj").value=name+" — Unite Students";
+}
+function useGenerated(){document.getElementById("mgr-email-body").value=document.getElementById("mgr-email-preview").textContent}
+function saveEvent(){
+  const name=document.getElementById("mgr-name").value.trim();if(!name){alert("Please enter an event name.");return}
+  const editId=document.getElementById("mgr-edit-id").value;const isEdit=editId!=="";
+  const id=isEdit?(isNaN(editId)?editId:Number(editId)):"custom_"+Date.now();
+  const evt={id,name,icon:getSelectedIcon(),cat:document.getElementById("mgr-cat").value,venue:document.getElementById("mgr-venue").value,short:document.getElementById("mgr-short").value.trim()||name,full:document.getElementById("mgr-full").value.trim()||name,duration:document.getElementById("mgr-duration").value.trim()||"TBC",people:document.getElementById("mgr-people").value.trim()||"TBC",cost:parseInt(document.getElementById("mgr-cost").value)||0,reusable:parseInt(document.getElementById("mgr-reusable").value)||0,prize:document.getElementById("mgr-prize").value.trim()||"TBC",allergy:document.getElementById("mgr-allergy").value.trim()||"No specific requirements noted.",tip:document.getElementById("mgr-tips").value.trim()||"",materials:getMaterials(),posterCat:document.getElementById("mgr-cat").value,posterCopy:{headline:name.toUpperCase(),sub:document.getElementById("mgr-short").value.trim().substring(0,60),body:document.getElementById("mgr-full").value.trim().substring(0,120),free:"Free entry",prize:document.getElementById("mgr-prize").value.trim()||"Prizes available",cta:"Sign up at reception or scan to RSVP"}};
+  const tpl={id,icon:evt.icon,cat:evt.cat,subj:document.getElementById("mgr-email-subj").value.trim()||name+" — Unite Students",body:document.getElementById("mgr-email-body").value.trim()||document.getElementById("mgr-email-preview").textContent};
+  if(isEdit){
+    const builtIn=EVENTS.find(e=>e.id===id||String(e.id)===String(id));
+    if(builtIn){hiddenIds.add(builtIn.id);const nId="custom_"+builtIn.id;const nEvt={...evt,id:nId};const nTpl={...tpl,id:nId};customEvents=customEvents.filter(e=>String(e.id)!==String(id)&&String(e.id)!==nId);customTemplates=customTemplates.filter(t=>String(t.id)!==String(id)&&String(t.id)!==nId);customEvents.push(nEvt);customTemplates.push(nTpl)}
+    else{customEvents=customEvents.map(e=>String(e.id)===String(id)?evt:e);customTemplates=customTemplates.map(t=>String(t.id)===String(id)?tpl:t)}
+  }else{customEvents.push(evt);customTemplates.push(tpl)}
+  saveCustomStore();refreshAll();closeMgr();
+}
+function deleteEvent(){const editId=document.getElementById("mgr-edit-id").value;if(!editId)return;const id=isNaN(editId)?editId:Number(editId);if(!confirm("Hide this event?"))return;hiddenIds.add(id);customEvents=customEvents.filter(e=>String(e.id)!==String(id));customTemplates=customTemplates.filter(t=>String(t.id)!==String(id));saveCustomStore();refreshAll();closeMgr()}
+function restoreEvent(id){hiddenIds.delete(id);hiddenIds.delete(String(id));hiddenIds.delete(isNaN(id)?id:Number(id));saveCustomStore();refreshAll();renderRestoreList()}
+function renderRestoreList(){const wrap=document.getElementById("restore-list-wrap");const hidden=[...EVENTS,...customEvents].filter(e=>hiddenIds.has(e.id)||hiddenIds.has(String(e.id)));if(!hidden.length){wrap.innerHTML='<div class="empty-restore">No hidden events.</div>';return}wrap.innerHTML='<div class="restore-list">'+hidden.map(e=>`<div class="restore-item"><div class="restore-item-left"><span>${e.icon}</span> ${e.name} <span style="font-size:.75rem;color:var(--muted)">(${catLabel(e.cat)})</span></div><button class="btn-restore" onclick="restoreEvent(${JSON.stringify(e.id)})">Restore</button></div>`).join("")+'</div>'}
+function updateHiddenBtn(){const n=hiddenIds.size;document.getElementById("btn-show-hidden").style.display=n>0?"inline-flex":"none";document.getElementById("hidden-count").textContent=n}
+
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMgr();closeModal();closeCompletion();closeFeedback()}});
+
+/* ── REFRESH ALL ── */
+function refreshAll(){
+  renderEventsGrid();renderBudgetList();renderTemplates();repopulatePlannerDropdown();repopulatePosterDropdown();updateHiddenBtn();renderRoadmap();renderInventory();renderEventLog();updateStats();
+  const active=getActiveEvents();
+  const lbl=document.getElementById("events-section-lbl");
+  if(lbl)lbl.textContent=active.length+" Event"+(active.length!==1?"s":"");
+}
+
+/* ── INIT ── */
+function init(){
+  initDark();
+  initRooms();
+  if(!profile||!profile.setupDone){showWelcome()}else{applyProfile()}
+  refreshAll();
+  renderMatRows([]);
+}
+init();
+</script>
+</body>
+</html>
